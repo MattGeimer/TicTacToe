@@ -10,16 +10,32 @@ import SwiftUI
 
 struct PositionView: View {
 	
-	@EnvironmentObject var globalEnvironment: GlobalEnvironment
+	@EnvironmentObject var gameState: GameState
 	var position: Position
 	var positionValue: PositionValue
-	@State private var showingAlert: Bool = false
+	@State private var presentAlert: Bool = false
+	@State var alertTitle: String = ""
+	@State var alertMessage: String = ""
 	
     var body: some View {
 		Button(action: {
 			//Attempt to play the position, if the position cannot be played, set variable to show alert
-			if self.globalEnvironment.receiveInput(position: self.position) == false {
-				self.showingAlert = true
+			if self.gameState.receiveInput(position: self.position) == false {
+				self.alertTitle = "Move Invalid"
+				self.alertMessage = "A player has already used this position"
+				self.presentAlert = true
+			} else if self.gameState.gameState == .xWins {
+				self.alertTitle = "X wins!"
+				self.alertMessage = "Player X has won!"
+				self.presentAlert = true
+			} else if self.gameState.gameState == .oWins {
+				self.alertTitle = "O wins!"
+				self.alertMessage = "Player O has won!"
+				self.presentAlert = true
+			} else if self.gameState.gameState == .tie {
+				self.alertTitle = "Tie Game"
+				self.alertMessage = "No player has won"
+				self.presentAlert = true
 			}
 		}) {
 			Text(positionValue.stringRepresentation)
@@ -30,8 +46,8 @@ struct PositionView: View {
 				.cornerRadius(62.5)
 				
 		}
-		.alert(isPresented: $showingAlert) {
-			Alert(title: Text("Move Invalid"), message: Text("A player has already used this position"), dismissButton: .cancel()) //Present an alert if the user attempts to play an already taken position
+		.alert(isPresented: $presentAlert) {
+			Alert(title: Text(self.alertTitle), message: Text(self.alertMessage), dismissButton: .cancel()) //Present an alert if the user attempts to play an already taken position
         }
     }
 }
@@ -46,6 +62,6 @@ struct PositionView_Previews: PreviewProvider {
 			PositionView(position: .topLeft, positionValue: .empty)
 				.previewLayout(.fixed(width: 150, height: 150))
 		}
-			.environmentObject(GlobalEnvironment())
+			.environmentObject(GameState())
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 	
-	@EnvironmentObject var globalEnvironment: GlobalEnvironment
+	@EnvironmentObject var gameState: GameState
 	let positions: [[Position]] = [[.topLeft, .topMiddle, .topRight], [.middleLeft, .center, .middleRight], [.bottomLeft, .bottomMiddle, .bottomRight]]
 	
     var body: some View {
@@ -21,10 +21,10 @@ struct ContentView: View {
 				.accessibility(identifier: "titleLabel")
 			
 			BoardGridView(positions: positions)
-				.environmentObject(globalEnvironment)
-			if globalEnvironment.gameOver {
+				.environmentObject(gameState)
+			if gameState.gameState != .ongoing && gameState.gameState != .empty {
 				Button(action: {
-					self.globalEnvironment.resetGame()
+					self.gameState.resetGame()
 				}) {
 					TitleLabelView(labelText: "New Game")
 						.padding()
@@ -41,6 +41,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-			.environmentObject(GlobalEnvironment())
+			.environmentObject(GameState())
     }
 }
