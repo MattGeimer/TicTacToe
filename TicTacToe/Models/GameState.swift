@@ -41,6 +41,8 @@ class GameState: ObservableObject {
 			return .xWins
 		} else if evaluatePlayer(valueToLookFor: .o) {
 			return .oWins
+		} else if evaluteTie() {
+			return .tie
 		} else {
 			return .ongoing
 		}
@@ -52,6 +54,17 @@ class GameState: ObservableObject {
 		let diagonalTopLeft = evaluateDiagonalWinTopLeftBottomRight(valueToLookFor: valueToLookFor)
 		let diagonalTopRight = evalutateDiagonalWinTopRightBottomLeft(valueToLookFor: valueToLookFor)
 		return horizontalWin || verticalWin || diagonalTopLeft || diagonalTopRight
+	}
+	
+	func evaluteTie() -> Bool {
+		for row in 0 ..< numberOfRows {
+			for column in 0 ..< numberOfColumns {
+				if positionValues[row][column] == .empty {
+					return false
+				}
+			}
+		}
+		return true
 	}
 	
 	func evaluateHorizontalWin(valueToLookFor: PositionValue) -> Bool {
