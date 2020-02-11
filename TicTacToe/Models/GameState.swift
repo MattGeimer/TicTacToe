@@ -17,7 +17,9 @@ class GameState: ObservableObject {
 	@Published var gameState: BoardState = .empty
 	@Published var positionValues: [[PositionValue]] = [[.empty, .empty, .empty], [.empty, .empty, .empty], [.empty, .empty, .empty]]
 	
-	//Take an input of which position was played, and if the position is empty, set its state to whichever player's turn it is
+	///Take an input of which position was played, and if the position is empty, set its state to whichever player's turn it is
+	///- Parameter position: the position to be played as an enum (ex: .topLeft)
+	///- Returns: true if position can be played, false otherwise
 	func receiveInput(position: Position) -> Bool {
 		guard positionValues[position.coordinate.1][position.coordinate.0] == .empty else {
 			return false
