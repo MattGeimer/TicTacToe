@@ -37,13 +37,21 @@ class GameState: ObservableObject {
 	}
 	
 	func evaluateCurrentBoard() -> BoardState {
-		if evaluateHorizontalWin(valueToLookFor: .x) || evaluateVerticalWin(valueToLookFor: .x) {
+		if evaluatePlayer(valueToLookFor: .x) {
 			return .xWins
-		} else if evaluateHorizontalWin(valueToLookFor: .o) || evaluateVerticalWin(valueToLookFor: .o) {
+		} else if evaluatePlayer(valueToLookFor: .o) {
 			return .oWins
 		} else {
 			return .ongoing
 		}
+	}
+	
+	func evaluatePlayer(valueToLookFor: PositionValue) -> Bool {
+		let horizontalWin = evaluateHorizontalWin(valueToLookFor: valueToLookFor)
+		let verticalWin = evaluateVerticalWin(valueToLookFor: valueToLookFor)
+		let diagonalTopLeft = evaluateDiagonalWinTopLeftBottomRight(valueToLookFor: valueToLookFor)
+		let diagonalTopRight = evalutateDiagonalWinTopRightBottomLeft(valueToLookFor: valueToLookFor)
+		return horizontalWin || verticalWin || diagonalTopLeft || diagonalTopRight
 	}
 	
 	func evaluateHorizontalWin(valueToLookFor: PositionValue) -> Bool {
@@ -75,6 +83,26 @@ class GameState: ObservableObject {
 			}
 			if toReturn {
 				break
+			}
+		}
+		return toReturn
+	}
+	
+	func evaluateDiagonalWinTopLeftBottomRight(valueToLookFor: PositionValue) -> Bool {
+		var toReturn: Bool = true
+		for index in 0 ..< numberOfRows {
+			if positionValues[index][index] != valueToLookFor {
+				toReturn = false
+			}
+		}
+		return toReturn
+	}
+	
+	func evalutateDiagonalWinTopRightBottomLeft(valueToLookFor: PositionValue) -> Bool {
+		var toReturn: Bool = true
+		for index in 0 ..< numberOfRows {
+			if positionValues[index][numberOfRows - index - 1] != valueToLookFor {
+				toReturn = false
 			}
 		}
 		return toReturn
