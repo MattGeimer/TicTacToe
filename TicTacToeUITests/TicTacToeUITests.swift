@@ -28,7 +28,7 @@ class TicTacToeUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 	
-	//Test X win conditions
+	//Test edge cases
 	
 	/// Tests what happens when the user presses the same button twice
 	func testPressedButtonTwice() {
@@ -38,6 +38,57 @@ class TicTacToeUITests: XCTestCase {
 		XCTAssertTrue(app.alerts["Move Invalid"].exists)
 		elementsQuery.buttons["Cancel"].tap()
 	}
+	
+	/// Tests what happens if there's a tie
+	func testTieGameScenario() {
+		XCUIApplication().buttons["topLeft"].tap()
+		XCUIApplication().buttons["topMiddle"].tap()
+		XCUIApplication().buttons["topRight"].tap()
+		XCUIApplication().buttons["center"].tap()
+		XCUIApplication().buttons["middleLeft"].tap()
+		XCUIApplication().buttons["middleRight"].tap()
+		XCUIApplication().buttons["bottomRight"].tap()
+		XCUIApplication().buttons["bottomLeft"].tap()
+		XCUIApplication().buttons["bottomMiddle"].tap()
+		
+		let elementsQuery = app.alerts["Tie Game"].scrollViews.otherElements
+		XCTAssertTrue(app.alerts["Tie Game"].exists)
+		elementsQuery.buttons["Cancel"].tap()
+		
+		let newGameButton: XCUIElement = XCUIApplication().buttons["newGameButton"]
+		XCTAssertTrue(newGameButton.exists)
+	}
+	
+	/// Tests whether the new game button clears the board
+	func testNewGameButton() {
+		XCUIApplication().buttons["topLeft"].tap()
+		XCUIApplication().buttons["topMiddle"].tap()
+		XCUIApplication().buttons["topRight"].tap()
+		XCUIApplication().buttons["center"].tap()
+		XCUIApplication().buttons["middleLeft"].tap()
+		XCUIApplication().buttons["middleRight"].tap()
+		XCUIApplication().buttons["bottomRight"].tap()
+		XCUIApplication().buttons["bottomLeft"].tap()
+		XCUIApplication().buttons["bottomMiddle"].tap()
+		
+		let elementsQuery = app.alerts["Tie Game"].scrollViews.otherElements
+		elementsQuery.buttons["Cancel"].tap()
+		
+		let newGameButton: XCUIElement = XCUIApplication().buttons["newGameButton"]
+		XCTAssertTrue(newGameButton.exists)
+		newGameButton.tap()
+		XCTAssertTrue(XCUIApplication().buttons["topLeft"].label == " ")
+		XCTAssertTrue(XCUIApplication().buttons["topMiddle"].label == " ")
+		XCTAssertTrue(XCUIApplication().buttons["topRight"].label == " ")
+		XCTAssertTrue(XCUIApplication().buttons["middleLeft"].label == " ")
+		XCTAssertTrue(XCUIApplication().buttons["center"].label == " ")
+		XCTAssertTrue(XCUIApplication().buttons["middleRight"].label == " ")
+		XCTAssertTrue(XCUIApplication().buttons["bottomLeft"].label == " ")
+		XCTAssertTrue(XCUIApplication().buttons["bottomMiddle"].label == " ")
+		XCTAssertTrue(XCUIApplication().buttons["bottomRight"].label == " ")
+	}
+	
+	//Test X win conditions
 	
 	/// Tests what happens when X wins by capturing all positions in the top row
 	func testHorizontalXWinTop() {
