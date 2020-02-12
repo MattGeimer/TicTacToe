@@ -8,12 +8,17 @@
 
 import Foundation
 
+///Represents where on the board a position is
+///- Author: Matt Geimer
+///- Version: 1.0
 enum Position {
 	case topLeft, topMiddle, topRight
 	case middleLeft, center, middleRight
 	case bottomLeft, bottomMiddle, bottomRight
 	
-	//Returns coordinate in form (x,y), where x and y begin in the top left corner at (0,0) and increase as x and y approach the bottom right
+	///Returns coordinate in form (x,y), where x and y begin in the top left corner at (0,0) and increase as x and y approach the bottom right
+	///- Author: Matt Geimer
+	///- Version: 1.0
 	var coordinate: (Int, Int) {
 		switch self {
 			case .topLeft: return (0,0)
@@ -28,6 +33,9 @@ enum Position {
 		}
 	}
 	
+	///Returns the string representation of the position's name
+	///- Author: Matt Geimer
+	///- Version: 1.0
 	var stringRepresentation: String {
 		switch self {
 			case .topLeft: return "topLeft"

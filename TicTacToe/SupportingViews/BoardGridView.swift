@@ -8,19 +8,25 @@
 
 import SwiftUI
 
+///A view containing the entire board
+///- Author: Matt Geimer
+///- Version: 1.0
 struct BoardGridView: View {
 	
 	@EnvironmentObject var gameState: GameState
 	var positions: [[Position]]
 	
 	var body: some View {
-		VStack {
-			ForEach(positions, id: \.self) { row in
-				HStack {
-					ForEach(row, id: \.self) { position in
-						PositionView(position: position, positionValue: self.gameState.positionValues[position.coordinate.1][position.coordinate.0])
-							.padding(5)
-							.environmentObject(self.gameState).accessibility(identifier: position.stringRepresentation)
+		GeometryReader { geometry in
+			VStack {
+				ForEach(self.positions, id: \.self) { row in
+					HStack {
+						ForEach(row, id: \.self) { position in
+							PositionView(position: position, positionValue: self.gameState.positionValues[position.coordinate.1][position.coordinate.0], size: CGSize(width: geometry.size.width / 4, height: geometry.size.width / 4))
+									.padding(geometry.size.width / 32)
+									.environmentObject(self.gameState)
+									.accessibility(identifier: position.stringRepresentation)
+						}
 					}
 				}
 			}
@@ -32,5 +38,6 @@ struct BoardGrid_Previews: PreviewProvider {
     static var previews: some View {
         BoardGridView(positions: [[.topLeft, .topMiddle, .topRight], [.middleLeft, .center, .middleRight], [.bottomLeft, .bottomMiddle, .bottomRight]])
 			.environmentObject(GameState())
+			.previewLayout(.fixed(width: 450, height: 450))
     }
 }

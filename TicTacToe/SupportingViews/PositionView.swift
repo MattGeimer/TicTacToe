@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+///A view representing one position on the board. Also contains code to display an alert upon game completion.
+///- Author: Matt Geimer
+///- Version: 1.0
 struct PositionView: View {
 	
 	@EnvironmentObject var gameState: GameState
@@ -16,6 +19,7 @@ struct PositionView: View {
 	@State private var presentAlert: Bool = false
 	@State var alertTitle: String = ""
 	@State var alertMessage: String = ""
+	var size: CGSize
 	
     var body: some View {
 		Button(action: {
@@ -41,9 +45,9 @@ struct PositionView: View {
 			Text(positionValue.stringRepresentation)
 				.font(.system(size: 64))
 				.foregroundColor(positionValue.colorToDisplay)
-				.frame(width: 125, height: 125)
+				.frame(width: size.width, height: size.height)
 				.background(Color.black)
-				.cornerRadius(62.5)
+				.cornerRadius(size.width / 2)
 				
 		}
 		.alert(isPresented: $presentAlert) {
@@ -55,11 +59,11 @@ struct PositionView: View {
 struct PositionView_Previews: PreviewProvider {
     static var previews: some View {
 		Group {
-			PositionView(position: .topLeft, positionValue: .x)
+			PositionView(position: .topLeft, positionValue: .x, size: CGSize(width: 125, height: 125))
 				.previewLayout(.fixed(width: 150, height: 150))
-			PositionView(position: .topLeft, positionValue: .o)
+			PositionView(position: .topLeft, positionValue: .o, size: CGSize(width: 125, height: 125))
 				.previewLayout(.fixed(width: 150, height: 150))
-			PositionView(position: .topLeft, positionValue: .empty)
+			PositionView(position: .topLeft, positionValue: .empty, size: CGSize(width: 125, height: 125))
 				.previewLayout(.fixed(width: 150, height: 150))
 		}
 			.environmentObject(GameState())

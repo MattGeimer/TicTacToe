@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+///A View containing a stylized label
+///- Author: Matt Geimer
+///- Version: 1.0
 struct TitleLabelView: View {
 	
 	var labelText: String

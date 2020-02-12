@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+///Represents the current state of the board, including the values of each position and the overall state.
+///- Author: Matt Geimer
+///- Version: 1.0
 class GameState: ObservableObject {
 	
 	let numberOfRows: Int = 3
@@ -30,14 +33,23 @@ class GameState: ObservableObject {
 			positionValues[position.coordinate.1][position.coordinate.0] = .o
 		}
 		
-		gameState = evaluateCurrentBoard()
-		if gameState == .ongoing {
-			xPlayerTurn.toggle()
-		}
+		updateGameState()
 		
 		return true
 	}
 	
+	///Evaluates the current board to determine current game state, then determines whether to toggle which player's turn it is
+	func updateGameState() {
+		gameState = evaluateCurrentBoard()
+		if gameState == .ongoing {
+			xPlayerTurn.toggle()
+		}
+	}
+	
+	///Evaluates the current board to determine the appropriate BoardState
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	///- Returns: The new board state based on the current state of the board.
 	func evaluateCurrentBoard() -> BoardState {
 		if evaluatePlayer(valueToLookFor: .x) {
 			return .xWins
@@ -50,6 +62,11 @@ class GameState: ObservableObject {
 		}
 	}
 	
+	///Checks if the player has won through any configuration
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	///- Parameter valueToLookFor: the player value to look for (ex: .x or .o)
+	///- Returns: Whether the player has won through any configuration
 	func evaluatePlayer(valueToLookFor: PositionValue) -> Bool {
 		let horizontalWin = evaluateHorizontalWin(valueToLookFor: valueToLookFor)
 		let verticalWin = evaluateVerticalWin(valueToLookFor: valueToLookFor)
@@ -58,6 +75,10 @@ class GameState: ObservableObject {
 		return horizontalWin || verticalWin || diagonalTopLeft || diagonalTopRight
 	}
 	
+	///Checks if the board has any empty positions remaining
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	///- Returns: Whether the entire board contains no empty positions
 	func evaluteTie() -> Bool {
 		for row in 0 ..< numberOfRows {
 			for column in 0 ..< numberOfColumns {
@@ -69,6 +90,11 @@ class GameState: ObservableObject {
 		return true
 	}
 	
+	///Checks if the player has won through any horizontal configuration
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	///- Parameter valueToLookFor: the player value to look for (ex: .x or .o)
+	///- Returns: Whether the player has won through any row
 	func evaluateHorizontalWin(valueToLookFor: PositionValue) -> Bool {
 		var toReturn: Bool = true
 		for row in 0 ..< numberOfRows {
@@ -86,6 +112,11 @@ class GameState: ObservableObject {
 		return toReturn
 	}
 	
+	///Checks if the player has won through any vertical configuration
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	///- Parameter valueToLookFor: the player value to look for (ex: .x or .o)
+	///- Returns: Whether the player has won through any column
 	func evaluateVerticalWin(valueToLookFor: PositionValue) -> Bool {
 		var toReturn: Bool = true
 		for column in 0 ..< numberOfColumns {
@@ -103,6 +134,11 @@ class GameState: ObservableObject {
 		return toReturn
 	}
 	
+	///Checks if the player has won through a diagonal configuration from the top left to the bottom right
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	///- Parameter valueToLookFor: the player value to look for (ex: .x or .o)
+	///- Returns: Whether the player has won through a diagonal configuration from the top left to the bottom right
 	func evaluateDiagonalWinTopLeftBottomRight(valueToLookFor: PositionValue) -> Bool {
 		var toReturn: Bool = true
 		for index in 0 ..< numberOfRows {
@@ -113,6 +149,11 @@ class GameState: ObservableObject {
 		return toReturn
 	}
 	
+	///Checks if the player has won through a diagonal configuration from the top right to the bottom left
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	///- Parameter valueToLookFor: the player value to look for (ex: .x or .o)
+	///- Returns: Whether the player has won through a diagonal configuration from the top right to the bottom left
 	func evalutateDiagonalWinTopRightBottomLeft(valueToLookFor: PositionValue) -> Bool {
 		var toReturn: Bool = true
 		for index in 0 ..< numberOfRows {
@@ -123,6 +164,9 @@ class GameState: ObservableObject {
 		return toReturn
 	}
 	
+	///Resets the game to the beginning position (xPlayerTurn to true, positionValues to empty, gameState to .empty)
+	///- Author: Matt Geimer
+	///- Version: 1.0
 	func resetGame() {
 		var newPositionValues: [[PositionValue]] = []
 		for row in positionValues {
@@ -135,5 +179,12 @@ class GameState: ObservableObject {
 		positionValues = newPositionValues
 		xPlayerTurn = true
 		gameState = .empty
+	}
+	
+	///Sets board to given 2d array
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	func setBoard(positionValues: [[PositionValue]]) {
+		self.positionValues = positionValues
 	}
 }

@@ -8,6 +8,9 @@
 
 import Foundation
 
+///Represents the state of the board as an enumeration
+///- Author: Matt Geimer
+///- Version: 1.0
 enum BoardState {
 	case empty, ongoing, xWins, oWins, tie
 }
