@@ -72,6 +72,7 @@ class GameState: ObservableObject {
 		let verticalWin = evaluateVerticalWin(valueToLookFor: valueToLookFor)
 		let diagonalTopLeft = evaluateDiagonalWinTopLeftBottomRight(valueToLookFor: valueToLookFor)
 		let diagonalTopRight = evalutateDiagonalWinTopRightBottomLeft(valueToLookFor: valueToLookFor)
+		
 		return horizontalWin || verticalWin || diagonalTopLeft || diagonalTopRight
 	}
 	
@@ -87,6 +88,7 @@ class GameState: ObservableObject {
 				}
 			}
 		}
+		
 		return true
 	}
 	
@@ -109,6 +111,7 @@ class GameState: ObservableObject {
 				break
 			}
 		}
+		
 		return toReturn
 	}
 	
@@ -131,6 +134,7 @@ class GameState: ObservableObject {
 				break
 			}
 		}
+		
 		return toReturn
 	}
 	
@@ -146,6 +150,7 @@ class GameState: ObservableObject {
 				toReturn = false
 			}
 		}
+		
 		return toReturn
 	}
 	
@@ -161,6 +166,7 @@ class GameState: ObservableObject {
 				toReturn = false
 			}
 		}
+		
 		return toReturn
 	}
 	
