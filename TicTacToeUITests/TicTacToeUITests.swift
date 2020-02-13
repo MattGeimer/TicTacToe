@@ -11,7 +11,7 @@ import XCTest
 /**
 Tests Tic Tac Toe app user interface to determine if any issues arise.
 - Author: Matt Geimer
-- Version: 0.1
+- Version: 1.0
 */
 class TicTacToeUITests: XCTestCase {
 	

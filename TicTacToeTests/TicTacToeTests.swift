@@ -9,6 +9,9 @@
 import XCTest
 @testable import TicTacToe
 
+///Tests the GameState class and receiveInput function
+///- Author: Matt Geimer
+///- Version: 1.0
 class TicTacToeTests: XCTestCase {
 	
 	var gameState: GameState!
@@ -24,8 +27,6 @@ class TicTacToeTests: XCTestCase {
     }
 
 	///Tests the receiveInput functionality
-	///- Author: Matt Geimer
-	///- Version: 1.0
     func testReceiveInput() {
 		XCTAssertTrue(gameState.receiveInput(position: .topLeft))
 		XCTAssertFalse(gameState.receiveInput(position: .topLeft))
