@@ -17,6 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Build Project
-        run: xcodebuild clean build-for-testing -scheme TicTacToe -destination "${matrix.destination}"
+        run: xcodebuild clean build-for-testing -scheme TicTacToe -destination "${{matrix.destination}}"
       - name: Run Tests
-        run: xcodebuild test-without-building -scheme TicTacToe -destination "${matrix.destination}"
+        run: xcodebuild test-without-building -scheme TicTacToe -destination "${{matrix.destination}}"
