@@ -15,9 +15,7 @@ jobs:
           destination: ['platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro']
     steps:
       - name: Checkout
-      - uses: actions/checkout@${GITHUB_REF}
-        with:
-          ref: ${{ github.ref }}
+      - uses: actions/checkout@master
       - name: Build and test
         run: |
           xcodebuild clean test -project TicTacToe.xcodeproj -scheme TicTacToe -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
