@@ -9,36 +9,27 @@
 import SwiftUI
 
 struct ContentView: View {
-	
-	@EnvironmentObject var gameState: GameState
-	let positions: [[Position]] = [[.topLeft, .topMiddle, .topRight], [.middleLeft, .center, .middleRight], [.bottomLeft, .bottomMiddle, .bottomRight]]
-	
-    var body: some View {
-		GeometryReader { geometry in
-			VStack {
-				Spacer()
-				TitleLabelView(labelText: "Illini Tac Toe")
-					.padding()
-					.frame(width: geometry.size.width / (4/3), height: geometry.size.height / 10)
-					.accessibility(identifier: "titleLabel")
-				
-				BoardGridView(positions: self.positions)
-				.frame(width: geometry.size.width, height: geometry.size.width)
-				.environmentObject(self.gameState)
-				
-				if self.gameState.gameState != .ongoing && self.gameState.gameState != .empty {
-					Button(action: {
-						self.gameState.resetGame()
-					}) {
-						TitleLabelView(labelText: "New Game")
-							.padding()
-							.accessibility(identifier: "newGameButton")
+	var body: some View {
+		NavigationView {
+			ZStack {
+				Color("backgroundColor")
+					.edgesIgnoringSafeArea(.all)
+				VStack {
+					Group {
+						NavigationLink(destination: MultiplayerView().environmentObject(GameState())) {
+							TitleLabelView(labelText: "Singleplayer")
+								.accessibility(label: Text("singleplayer"))
+						}
+						NavigationLink(destination: MultiplayerView()
+							.environmentObject(GameState())) {
+							TitleLabelView(labelText: "Multiplayer")
+								.accessibility(label: Text("multiplayer"))
+						}
 					}
+						.padding(25)
 				}
-				Spacer()
+					.navigationBarTitle("Tic Tac Toe")
 			}
-				.background(Color.orange)
-				.edgesIgnoringSafeArea(.all)
 		}
     }
 }
@@ -49,6 +40,5 @@ struct ContentView_Previews: PreviewProvider {
             ContentView()
                 .previewDevice(PreviewDevice(rawValue: deviceName))
         }
-			.environmentObject(GameState())
     }
 }

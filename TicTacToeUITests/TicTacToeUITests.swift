@@ -28,10 +28,18 @@ class TicTacToeUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 	
+	func startMultiplayerGame() {
+		let multiplayerGameButton: XCUIElement = XCUIApplication().buttons["multiplayer"]
+		XCTAssertTrue(multiplayerGameButton.exists)
+		multiplayerGameButton.tap()
+	}
+	
 	//Test edge cases
 	
 	/// Tests what happens when the user presses the same button twice
 	func testPressedButtonTwice() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
 		let elementsQuery = app.alerts["Move Invalid"].scrollViews.otherElements
@@ -41,6 +49,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens if there's a tie
 	func testTieGameScenario() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["topMiddle"].tap()
 		XCUIApplication().buttons["topRight"].tap()
@@ -61,6 +71,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests whether the new game button clears the board
 	func testNewGameButton() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["topMiddle"].tap()
 		XCUIApplication().buttons["topRight"].tap()
@@ -92,6 +104,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when X wins by capturing all positions in the top row
 	func testHorizontalXWinTop() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["topMiddle"].tap()
@@ -108,6 +122,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when X wins by capturing all positions in the middle row
 	func testHorizontalXWinMiddle() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["center"].tap()
@@ -124,6 +140,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when X wins by capturing all positions in the bottom row
 	func testHorizontalXWinBottom() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["bottomLeft"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["bottomMiddle"].tap()
@@ -140,6 +158,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when X wins by capturing all positions in the left column
 	func testVerticalXWinLeft() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["topRight"].tap()
 		XCUIApplication().buttons["middleLeft"].tap()
@@ -156,6 +176,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when X wins by capturing all positions in the middle column
 	func testVerticalXWinMiddle() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["topMiddle"].tap()
 		XCUIApplication().buttons["topRight"].tap()
 		XCUIApplication().buttons["center"].tap()
@@ -172,6 +194,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when X wins by capturing all positions in the right column
 	func testVerticalXWinRight() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["topRight"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["middleRight"].tap()
@@ -188,6 +212,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when X wins by capturing the diagonal from the top left to the bottom right
 	func testDiagonalXWinTopLeftToBottomRight() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["topRight"].tap()
 		XCUIApplication().buttons["center"].tap()
@@ -204,6 +230,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when X wins by capturing the diagonal from the top right to the bottom left
 	func testDiagonalXWinTopRightToBottomLeft() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["topRight"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["center"].tap()
@@ -222,6 +250,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when O wins by capturing all positions in the top row
 	func testHorizontalOWinTop() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["bottomLeft"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["middleLeft"].tap()
@@ -239,6 +269,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when O wins by capturing all positions in the middle row
 	func testHorizontalOWinMiddle() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["bottomLeft"].tap()
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
@@ -256,6 +288,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when O wins by capturing all positions in the bottom row
 	func testHorizontalOWinBottom() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["bottomLeft"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
@@ -273,6 +307,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when O wins by capturing all positions in the left column
 	func testVerticalOWinLeft() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["center"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["topRight"].tap()
@@ -290,6 +326,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when O wins by capturing all positions in the middle column
 	func testVerticalOWinMiddle() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["topMiddle"].tap()
 		XCUIApplication().buttons["topRight"].tap()
@@ -307,6 +345,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when O wins by capturing all positions in the right column
 	func testVerticalOWinRight() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["center"].tap()
 		XCUIApplication().buttons["topRight"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
@@ -324,6 +364,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when O wins by capturing the diagonal from the top left to the bottom right
 	func testDiagonalOWinTopLeftToBottomRight() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["topLeft"].tap()
 		XCUIApplication().buttons["topRight"].tap()
@@ -341,6 +383,8 @@ class TicTacToeUITests: XCTestCase {
 	
 	/// Tests what happens when O wins by capturing the diagonal from the top right to the bottom left
 	func testDiagonalOWinTopRightToBottomLeft() {
+		startMultiplayerGame()
+		
 		XCUIApplication().buttons["middleRight"].tap()
 		XCUIApplication().buttons["topRight"].tap()
 		XCUIApplication().buttons["topLeft"].tap()

@@ -18,9 +18,10 @@ struct TitleLabelView: View {
 	var body: some View {
 		Text(labelText)
 			.font(.largeTitle)
-			.foregroundColor(Color.orange)
+			.foregroundColor(Color("backgroundColor"))
+			.frame(minWidth: 200)
 			.padding()
-			.background(Color.blue)
+			.background(Color("positionBackground"))
 			.cornerRadius(50)
 	}
 }
