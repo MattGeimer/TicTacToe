@@ -12,11 +12,11 @@ jobs:
     runs-on: macOS-latest
     strategy:
         matrix:
-          destination: ["platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro"]
+            destination: ['platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro']
     steps:
       - name: Checkout
         uses: actions/checkout@master
       - name: Build Project
-        run: xcodebuild clean build-for-testing -scheme TicTacToe -destination "${destination}"
+        run: xcodebuild clean build-for-testing -scheme TicTacToe -destination "${matrix.destination}"
       - name: Run Tests
-        run: xcodebuild test-without-building -scheme TicTacToe -destination "${destination}"
+        run: xcodebuild test-without-building -scheme TicTacToe -destination "${matrix.destination}"
