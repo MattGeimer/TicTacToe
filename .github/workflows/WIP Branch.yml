@@ -1,4 +1,4 @@
-name: Swift
+name: WIP
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
           destination: ['platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro']
     steps:
       - name: Checkout
-      - uses: actions/checkout@master
+      - uses: actions/checkout@${GITHUB_REF}
         with:
           ref: ${{ github.ref }}
       - name: Build and test
