@@ -16,12 +16,12 @@ struct ContentView: View {
 					.edgesIgnoringSafeArea(.all)
 				VStack {
 					Group {
-						NavigationLink(destination: MultiplayerView().environmentObject(GameState())) {
+						NavigationLink(destination: SingleplayerView().environmentObject(GameState(singlePlayer: true))) {
 							TitleLabelView(labelText: "Singleplayer")
 								.accessibility(label: Text("singleplayer"))
 						}
 						NavigationLink(destination: MultiplayerView()
-							.environmentObject(GameState())) {
+							.environmentObject(GameState(singlePlayer: false))) {
 							TitleLabelView(labelText: "Multiplayer")
 								.accessibility(label: Text("multiplayer"))
 						}

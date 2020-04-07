@@ -49,4 +49,38 @@ enum Position {
 			case .bottomRight: return "bottomRight"
 		}
 	}
+	
+	static func getCoordinate(x: Int, y: Int) -> Position {
+		switch x {
+		case 0:
+			switch y {
+			case 0:
+				return .topLeft
+			case 1:
+				return .middleLeft
+			default:
+				return .bottomLeft
+			}
+		case 1:
+			switch y {
+			case 0:
+				return .topMiddle
+			case 1:
+				return .center
+			default:
+				return .bottomMiddle
+			}
+		case 2:
+			switch y {
+			case 0:
+				return .topRight
+			case 1:
+				return .middleRight
+			default:
+				return .bottomRight
+			}
+		default:
+			return .center
+		}
+	}
 }

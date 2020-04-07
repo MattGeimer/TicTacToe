@@ -23,8 +23,10 @@ struct PositionView: View {
 	
     var body: some View {
 		Button(action: {
+			let validMove = self.gameState.receiveInput(position: self.position)
+			
 			//Attempt to play the position, if the position cannot be played, set variable to show alert
-			if self.gameState.receiveInput(position: self.position) == false {
+			if validMove == false {
 				self.alertTitle = "Move Invalid"
 				self.alertMessage = "A player has already used this position"
 				self.presentAlert = true
@@ -66,7 +68,7 @@ struct PositionView_Previews: PreviewProvider {
 			PositionView(position: .topLeft, positionValue: .empty, size: CGSize(width: 125, height: 125))
 				.previewLayout(.fixed(width: 150, height: 150))
 		}
-			.environmentObject(GameState())
+			.environmentObject(GameState(singlePlayer: false))
 			.environment(\.colorScheme, .dark)
     }
 }

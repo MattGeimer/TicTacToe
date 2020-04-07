@@ -16,9 +16,14 @@ class GameState: ObservableObject {
 	let numberOfRows: Int = 3
 	let numberOfColumns: Int = 3
 	
+	@Published var singlePlayer: Bool
 	@Published var xPlayerTurn: Bool = true
 	@Published var gameState: BoardState = .empty
-	@Published var positionValues: [[PositionValue]] = [[.empty, .empty, .empty], [.empty, .empty, .empty], [.empty, .empty, .empty]]
+	var positionValues: [[PositionValue]] = [[.empty, .empty, .empty], [.empty, .empty, .empty], [.empty, .empty, .empty]]
+	
+	init(singlePlayer: Bool) {
+		self.singlePlayer = singlePlayer
+	}
 	
 	///Take an input of which position was played, and if the position is empty, set its state to whichever player's turn it is
 	///- Parameter position: the position to be played as an enum (ex: .topLeft)
@@ -27,6 +32,7 @@ class GameState: ObservableObject {
 		guard positionValues[position.coordinate.1][position.coordinate.0] == .empty else {
 			return false
 		}
+		
 		if xPlayerTurn {
 			positionValues[position.coordinate.1][position.coordinate.0] = .x
 		} else {
@@ -43,7 +49,78 @@ class GameState: ObservableObject {
 		gameState = evaluateCurrentBoard()
 		if gameState == .ongoing {
 			xPlayerTurn.toggle()
+			
+			if (singlePlayer && !xPlayerTurn) {
+				let bestMove: Position = findBestMove()
+				self.setPosition(position: bestMove, value: .o)
+				updateGameState()
+			}
 		}
+	}
+	
+	func findBestMove() -> Position {
+		var bestCase = Int.min
+		var bestMove:Position?
+		
+		for row in 0 ..< numberOfRows {
+			for col in 0 ..< numberOfColumns {
+				if (positionValues[row][col] == .empty) {
+					let newBoard = GameState(singlePlayer: true)
+					newBoard.setBoard(positionValues: positionValues)
+					
+					let newPosition = Position.getCoordinate(x: col, y: row)
+					newBoard.setPosition(position: newPosition, value: .o)
+					
+					let result = GameState.minimax(newBoard, maximizing: false, originalPlayer: .o)
+					
+					if (result > bestCase) {
+						bestCase = result
+						bestMove = Position.getCoordinate(x: col, y: row)
+					}
+				}
+			}
+		}
+		
+		var row = Int.random(in: 0 ..< numberOfRows)
+		var col = Int.random(in: 0 ..< numberOfColumns)
+		
+		while (positionValues[row][col] != .empty) {
+			row = Int.random(in: 0 ..< numberOfRows)
+			col = Int.random(in: 0 ..< numberOfColumns)
+		}
+		
+		return bestMove ?? Position.getCoordinate(x: col, y: row)
+	}
+	
+	static func minimax(_ board: GameState, maximizing: Bool, originalPlayer: PositionValue) -> Int {
+		//Base case
+		if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .x) || (board.evaluateCurrentBoard() == .oWins && originalPlayer == .o)) {
+			return 1
+		} else if (board.evaluateCurrentBoard() == .tie) {
+			return 0
+		} else if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .o) || (board.evaluateCurrentBoard() == .oWins && originalPlayer == .x)) {
+			return -1
+		}
+		
+		//Recursive Case
+		var evaluation = maximizing ? Int.max : Int.min
+		
+		for row in 0 ..< board.numberOfRows {
+			for col in 0 ..< board.numberOfColumns {
+				if (board.positionValues[row][col] == .empty) {
+					let newBoard = GameState(singlePlayer: true)
+					newBoard.setBoard(positionValues: board.positionValues)
+					
+					let newPosition = Position.getCoordinate(x: col, y: row)
+					newBoard.setPosition(position: newPosition, value: originalPlayer)
+					
+					let result = minimax(newBoard, maximizing: maximizing ? false : true, originalPlayer: originalPlayer)
+					evaluation = maximizing ? max(result, evaluation) : min(result, evaluation)
+				}
+			}
+		}
+		
+		return evaluation
 	}
 	
 	///Evaluates the current board to determine the appropriate BoardState
@@ -192,5 +269,16 @@ class GameState: ObservableObject {
 	///- Version: 1.0
 	func setBoard(positionValues: [[PositionValue]]) {
 		self.positionValues = positionValues
+	}
+	
+	///Sets a position to the desired value
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	func setPosition(position: Position, value: PositionValue) {
+		guard positionValues[position.coordinate.1][position.coordinate.0] == .empty else {
+			return
+		}
+		
+		positionValues[position.coordinate.1][position.coordinate.0] = value
 	}
 }
