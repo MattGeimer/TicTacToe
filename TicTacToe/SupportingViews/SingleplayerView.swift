@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct MultiplayerView: View {
+struct SingleplayerView: View {
     @EnvironmentObject var gameState: GameState
 	let positions: [[Position]] = [[.topLeft, .topMiddle, .topRight], [.middleLeft, .center, .middleRight], [.bottomLeft, .bottomMiddle, .bottomRight]]
 	
@@ -16,14 +16,14 @@ struct MultiplayerView: View {
 		GeometryReader { geometry in
 			VStack {
 				Spacer()
-				TitleLabelView(labelText: "Tic Tac Toe")
+				TitleLabelView(labelText: "Singleplayer")
 					.padding()
 					.frame(width: geometry.size.width / (4/3), height: geometry.size.height / 10)
 					.accessibility(identifier: "titleLabel")
 				
 				BoardGridView(positions: self.positions)
-				.frame(width: geometry.size.width, height: geometry.size.width)
-				.environmentObject(self.gameState)
+					.frame(width: geometry.size.width, height: geometry.size.width)
+					.environmentObject(self.gameState)
 				
 				if self.gameState.gameState != .ongoing && self.gameState.gameState != .empty {
 					Button(action: {
@@ -42,12 +42,12 @@ struct MultiplayerView: View {
     }
 }
 
-struct MultiplayerView_Previews: PreviewProvider {
+struct SingleplayerView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(["iPhone SE", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPad Pro (11-inch)"], id: \.self) { deviceName in
-            MultiplayerView()
+            SingleplayerView()
                 .previewDevice(PreviewDevice(rawValue: deviceName))
         }
-			.environmentObject(GameState())
+			.environmentObject(GameState(singlePlayer: true))
     }
 }

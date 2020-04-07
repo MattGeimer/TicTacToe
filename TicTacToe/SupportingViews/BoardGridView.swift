@@ -37,7 +37,7 @@ struct BoardGridView: View {
 struct BoardGrid_Previews: PreviewProvider {
     static var previews: some View {
         BoardGridView(positions: [[.topLeft, .topMiddle, .topRight], [.middleLeft, .center, .middleRight], [.bottomLeft, .bottomMiddle, .bottomRight]])
-			.environmentObject(GameState())
+			.environmentObject(GameState(singlePlayer: false))
 			.previewLayout(.fixed(width: 450, height: 450))
     }
 }
