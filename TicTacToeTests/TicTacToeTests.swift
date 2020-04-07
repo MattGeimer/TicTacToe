@@ -18,7 +18,7 @@ class TicTacToeTests: XCTestCase {
 	
     override func setUp() {
 		super.setUp()
-		gameState = GameState()
+		gameState = GameState(singlePlayer: false)
     }
 
     override func tearDown() {
