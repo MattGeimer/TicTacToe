@@ -1,0 +1,15 @@
+version: "Apple Swift version 5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)"
+options: "481c164569ba793ac2caaef669e73a5e"
+build_time: [1586215235, 484439000]
+inputs:
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/AppDelegate.swift": [9223372036, 854775807]
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/MultiplayerView.swift": [9223372036, 854775807]
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/SupportingViews/PositionView.swift": [9223372036, 854775807]
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/Models/PositionValue.swift": [9223372036, 854775807]
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/SceneDelegate.swift": [9223372036, 854775807]
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/Models/GameState.swift": [9223372036, 854775807]
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/Models/Position.swift": [9223372036, 854775807]
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/SupportingViews/TitleLabelView.swift": [9223372036, 854775807]
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/ContentView.swift": [9223372036, 854775807]
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/Models/BoardState.swift": [9223372036, 854775807]
+  "/Users/matthewgeimer/Desktop/TicTacToe/TicTacToe/SupportingViews/BoardGridView.swift": [9223372036, 854775807]

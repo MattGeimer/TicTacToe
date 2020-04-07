@@ -1,0 +1,24 @@
+name: WIP UI/Unit Tests
+
+on:
+  push:
+    branches: [ WIP ]
+  pull_request:
+    branches: [ WIP ]
+
+jobs:
+  test:
+    name: Build and Test
+    runs-on: macOS-latest
+    strategy:
+        matrix:
+            destination: ['platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Build Project
+        run: xcodebuild clean build-for-testing -scheme TicTacToe -destination "${{matrix.destination}}"
+      - name: Run Unit Tests
+        run: xcodebuild test-without-building -scheme TicTacToe -destination "${{matrix.destination}}" -only-testing TicTacToeTests
+      - name: Run UI Tests
+        run: xcodebuild test-without-building -scheme TicTacToe -destination "${{matrix.destination}}" -only-testing TicTacToeUITests

@@ -46,7 +46,7 @@ struct PositionView: View {
 				.font(.system(size: 64))
 				.foregroundColor(positionValue.colorToDisplay)
 				.frame(width: size.width, height: size.height)
-				.background(Color.black)
+				.background(Color("positionBackground"))
 				.cornerRadius(size.width / 2)
 				
 		}
@@ -67,5 +67,6 @@ struct PositionView_Previews: PreviewProvider {
 				.previewLayout(.fixed(width: 150, height: 150))
 		}
 			.environmentObject(GameState())
+			.environment(\.colorScheme, .dark)
     }
 }
