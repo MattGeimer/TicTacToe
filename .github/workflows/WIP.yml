@@ -1,4 +1,4 @@
-name: WIP
+name: WIP UI/Unit Tests
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: Build and Test
     runs-on: macOS-latest
     strategy:
         matrix:
