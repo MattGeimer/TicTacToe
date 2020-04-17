@@ -30,8 +30,8 @@ enum PositionValue {
 	///- Version: 1.0
 	var colorToDisplay: Color {
 		switch self {
-			case .x: return Color("xPlayerColor")
-			case .o: return Color("oPlayerColor")
+			case .x: return Color("xPlayerColor-new")
+			case .o: return Color("oPlayerColor-new")
 			case .empty: return Color.yellow
 		}
 	}

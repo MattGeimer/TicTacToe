@@ -16,7 +16,7 @@ struct SingleplayerView: View {
 		GeometryReader { geometry in
 			VStack {
 				Spacer()
-				TitleLabelView(labelText: "Singleplayer")
+				TitleLabelView(labelText: "Single Player")
 					.padding()
 					.frame(width: geometry.size.width / (4/3), height: geometry.size.height / 10)
 					.accessibility(identifier: "titleLabel")
