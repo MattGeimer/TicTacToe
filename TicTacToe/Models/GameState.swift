@@ -58,6 +58,10 @@ class GameState: ObservableObject {
 		}
 	}
 	
+	///Determine the best move for the AI
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	///- Returns: The best position that the AI could make given the current board
 	func findBestMove() -> Position {
 		var bestCase = Int.min
 		var bestMove:Position?
@@ -92,18 +96,24 @@ class GameState: ObservableObject {
 		return bestMove ?? Position.getCoordinate(x: col, y: row)
 	}
 	
+	///Evaluates the value of a board and how the game would play out after it.
+	///- Author: Matt Geimer
+	///- Version: 1.0
+	///- Returns: The score of the board (number of games won - number of games lost)
 	static func minimax(_ board: GameState, maximizing: Bool, originalPlayer: PositionValue) -> Int {
-		//Base case
-		if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .x) || (board.evaluateCurrentBoard() == .oWins && originalPlayer == .o)) {
+		//Base case: The board is full or a player has won. Return 1 if our player won, 0 if it was a tie, or -1 if our player lost
+		if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .x)
+			|| (board.evaluateCurrentBoard() == .oWins && originalPlayer == .o)) {
 			return 1
 		} else if (board.evaluateCurrentBoard() == .tie) {
 			return 0
-		} else if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .o) || (board.evaluateCurrentBoard() == .oWins && originalPlayer == .x)) {
+		} else if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .o)
+			|| (board.evaluateCurrentBoard() == .oWins && originalPlayer == .x)) {
 			return -1
 		}
 		
-		//Recursive Case
-		var evaluation = maximizing ? Int.max : Int.min
+		//Recursive Case: return the sum of the values of the rest of the board being played out.
+		var evaluation = 0
 		
 		for row in 0 ..< board.numberOfRows {
 			for col in 0 ..< board.numberOfColumns {
@@ -112,10 +122,10 @@ class GameState: ObservableObject {
 					newBoard.setBoard(positionValues: board.positionValues)
 					
 					let newPosition = Position.getCoordinate(x: col, y: row)
-					newBoard.setPosition(position: newPosition, value: originalPlayer)
+					newBoard.setPosition(position: newPosition, value: maximizing ? .o : .x)
 					
 					let result = minimax(newBoard, maximizing: maximizing ? false : true, originalPlayer: originalPlayer)
-					evaluation = maximizing ? max(result, evaluation) : min(result, evaluation)
+					evaluation += result
 				}
 			}
 		}
