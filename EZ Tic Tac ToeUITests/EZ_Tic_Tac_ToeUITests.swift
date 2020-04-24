@@ -13,7 +13,7 @@ Tests Tic Tac Toe app user interface to determine if any issues arise.
 - Author: Matt Geimer
 - Version: 1.0
 */
-class TicTacToeUITests: XCTestCase {
+class EZTicTacToeUITests: XCTestCase {
 	
 	private var app: XCUIApplication!
 	

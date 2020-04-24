@@ -12,7 +12,7 @@ import XCTest
 ///Tests the GameState class and receiveInput function
 ///- Author: Matt Geimer
 ///- Version: 1.0
-class TicTacToeTests: XCTestCase {
+class EZTicTacToeTests: XCTestCase {
 	
 	var gameState: GameState!
 	
