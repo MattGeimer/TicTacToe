@@ -20,8 +20,8 @@ enum PositionValue {
 	var stringRepresentation: String {
 		switch self {
 			case .empty: return " "
-			case .x: return "X"
-			case .o: return "O"
+			case .x: return "✕"
+			case .o: return "○"
 		}
 	}
 	

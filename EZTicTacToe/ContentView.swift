@@ -15,20 +15,26 @@ struct ContentView: View {
 				Color("backgroundColor")
 					.edgesIgnoringSafeArea(.all)
 				VStack {
+					Text("EZ Tic Tac Toe")
+						.font(.largeTitle)
+						.fontWeight(.heavy)
+					
+					Spacer()
+					
 					Group {
 						NavigationLink(destination: SingleplayerView().environmentObject(GameState(singlePlayer: true))) {
-							TitleLabelView(labelText: "Singleplayer")
+							TitleLabelView(labelText: "1 Player")
 								.accessibility(label: Text("singleplayer"))
 						}
 						NavigationLink(destination: MultiplayerView()
 							.environmentObject(GameState(singlePlayer: false))) {
-							TitleLabelView(labelText: "Multiplayer")
+							TitleLabelView(labelText: "2 Players")
 								.accessibility(label: Text("multiplayer"))
 						}
 					}
 						.padding(25)
+					Spacer()
 				}
-					.navigationBarTitle("Tic Tac Toe")
 			}
 		}
     }
