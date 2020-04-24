@@ -19,6 +19,6 @@ jobs:
       - name: Build Project
         run: xcodebuild clean build-for-testing -scheme "EZ Tic Tac Toe" -destination "${{matrix.destination}}"
       - name: Run Unit Tests
-        run: xcodebuild test-without-building -scheme "EZ Tic Tac Toe" -destination "${{matrix.destination}}" -only-testing EZTicTacToeTests
+        run: xcodebuild test-without-building -scheme "EZ Tic Tac Toe" -destination "${{matrix.destination}}" -only-testing EZ_Tic_Tac_Toe_Tests
       - name: Run UI Tests
-        run: xcodebuild test-without-building -scheme "EZ Tic Tac Toe" -destination "${{matrix.destination}}" -only-testing EZTicTacToeUITests
+        run: xcodebuild test-without-building -scheme "EZ Tic Tac Toe" -destination "${{matrix.destination}}" -only-testing EZ_Tic_Tac_ToeUITests
