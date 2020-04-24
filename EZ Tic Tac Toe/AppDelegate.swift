@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  TicTacToe
+//  EZ Tic Tac Toe
 //
-//  Created by Matthew Geimer on 2/3/20.
+//  Created by Matthew Geimer on 4/24/20.
 //  Copyright © 2020 Matthew Geimer. All rights reserved.
 //
 

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TicTacToe
+@testable import EZ_Tic_Tac_Toe
 
 ///Tests the GameState class and receiveInput function
 ///- Author: Matt Geimer

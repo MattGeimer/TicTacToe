@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  TicTacToe
+//  EZ Tic Tac Toe
 //
-//  Created by Matthew Geimer on 2/3/20.
+//  Created by Matthew Geimer on 4/24/20.
 //  Copyright © 2020 Matthew Geimer. All rights reserved.
 //
 
@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// Use a UIHostingController as window root view controller.
 		if let windowScene = scene as? UIWindowScene {
 		    let window = UIWindow(windowScene: windowScene)
-			window.rootViewController = UIHostingController(rootView: contentView)
+		    window.rootViewController = UIHostingController(rootView: contentView)
 		    self.window = window
 		    window.makeKeyAndVisible()
 		}

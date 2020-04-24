@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/matthewgeimer/Desktop/TicTacToe/EZTicTacToe.xcodeproj">
+      location = "self:EZ Tic Tac Toe.xcodeproj">
    </FileRef>
 </Workspace>
