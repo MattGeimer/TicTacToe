@@ -37,12 +37,13 @@ struct ContentView: View {
 				}
 			}
 		}
+		.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-		ForEach(["iPhone SE", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPad Pro (11-inch)"], id: \.self) { deviceName in
+		ForEach(["iPhone SE (2nd generation)", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPad Pro (11-inch)", "iPad (7th generation)"], id: \.self) { deviceName in
             ContentView()
                 .previewDevice(PreviewDevice(rawValue: deviceName))
         }
