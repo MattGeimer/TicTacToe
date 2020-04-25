@@ -45,7 +45,7 @@ struct PositionView: View {
 			}
 		}) {
 			Text(positionValue.stringRepresentation)
-				.font(.system(size: 64))
+				.font(.system(size: UIDevice.current.userInterfaceIdiom == .phone ? 64 : 128))
 				.foregroundColor(positionValue.colorToDisplay)
 				.frame(width: size.width, height: size.height)
 				.background(Color("positionBackground"))

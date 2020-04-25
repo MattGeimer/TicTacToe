@@ -24,6 +24,7 @@
 		22AEFB1A24536303008E04EB /* SingleplayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1524536303008E04EB /* SingleplayerView.swift */; };
 		22AEFB1B24536303008E04EB /* PositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1624536303008E04EB /* PositionView.swift */; };
 		22AEFB23245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB22245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift */; };
+		22C8160D2454F16500644FD4 /* UserInterfaceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C8160C2454F16500644FD4 /* UserInterfaceEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		22AEFB20245363BA008E04EB /* EZ Tic Tac ToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EZ Tic Tac ToeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AEFB22245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZ_Tic_Tac_ToeTests.swift; sourceTree = "<group>"; };
 		22AEFB24245363BA008E04EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22C8160C2454F16500644FD4 /* UserInterfaceEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				22AEFB0A245362F5008E04EB /* GameState.swift */,
 				22AEFB0B245362F5008E04EB /* Position.swift */,
 				22AEFB0C245362F5008E04EB /* PositionValue.swift */,
+				22C8160C2454F16500644FD4 /* UserInterfaceEnum.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				22AEFB0E245362F5008E04EB /* GameState.swift in Sources */,
 				22AEFB1824536303008E04EB /* TitleLabelView.swift in Sources */,
 				22AEFB10245362F5008E04EB /* PositionValue.swift in Sources */,
+				22C8160D2454F16500644FD4 /* UserInterfaceEnum.swift in Sources */,
 				22AEFB1B24536303008E04EB /* PositionView.swift in Sources */,
 				225452CB245361FB00D12A17 /* SceneDelegate.swift in Sources */,
 				22AEFB0F245362F5008E04EB /* Position.swift in Sources */,
