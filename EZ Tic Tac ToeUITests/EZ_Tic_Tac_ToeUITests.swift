@@ -61,6 +61,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["bottomLeft"].tap()
 		XCUIApplication().buttons["bottomMiddle"].tap()
 		
+		sleep(1)
+		
 		let elementsQuery = app.alerts["Tie Game"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["Tie Game"].exists)
 		elementsQuery.buttons["Cancel"].tap()
@@ -82,6 +84,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["bottomRight"].tap()
 		XCUIApplication().buttons["bottomLeft"].tap()
 		XCUIApplication().buttons["bottomMiddle"].tap()
+		
+		sleep(1)
 		
 		let elementsQuery = app.alerts["Tie Game"].scrollViews.otherElements
 		elementsQuery.buttons["Cancel"].tap()
@@ -112,6 +116,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["center"].tap()
 		XCUIApplication().buttons["topRight"].tap()
 		
+		sleep(1)
+		
 		let elementsQuery = app.alerts["X wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["X wins!"].exists)
 		elementsQuery.buttons["Cancel"].tap()
@@ -129,6 +135,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["center"].tap()
 		XCUIApplication().buttons["topMiddle"].tap()
 		XCUIApplication().buttons["middleRight"].tap()
+		
+		sleep(1)
 		
 		let elementsQuery = app.alerts["X wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["X wins!"].exists)
@@ -148,6 +156,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["topMiddle"].tap()
 		XCUIApplication().buttons["bottomRight"].tap()
 		
+		sleep(1)
+		
 		let elementsQuery = app.alerts["X wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["X wins!"].exists)
 		elementsQuery.buttons["Cancel"].tap()
@@ -165,6 +175,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["middleRight"].tap()
 		XCUIApplication().buttons["bottomLeft"].tap()
+		
+		sleep(1)
 		
 		let elementsQuery = app.alerts["X wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["X wins!"].exists)
@@ -184,6 +196,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["middleRight"].tap()
 		XCUIApplication().buttons["bottomMiddle"].tap()
 		
+		sleep(1)
+		
 		let elementsQuery = app.alerts["X wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["X wins!"].exists)
 		elementsQuery.buttons["Cancel"].tap()
@@ -201,6 +215,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["middleRight"].tap()
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["bottomRight"].tap()
+		
+		sleep(1)
 		
 		let elementsQuery = app.alerts["X wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["X wins!"].exists)
@@ -220,6 +236,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["middleRight"].tap()
 		XCUIApplication().buttons["bottomRight"].tap()
 		
+		sleep(1)
+		
 		let elementsQuery = app.alerts["X wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["X wins!"].exists)
 		elementsQuery.buttons["Cancel"].tap()
@@ -237,6 +255,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["center"].tap()
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["bottomLeft"].tap()
+		
+		sleep(1)
 		
 		let elementsQuery = app.alerts["X wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["X wins!"].exists)
@@ -259,6 +279,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["center"].tap()
 		XCUIApplication().buttons["topRight"].tap()
 		
+		sleep(1)
+		
 		let elementsQuery = app.alerts["O wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["O wins!"].exists)
 		elementsQuery.buttons["Cancel"].tap()
@@ -277,6 +299,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["center"].tap()
 		XCUIApplication().buttons["topMiddle"].tap()
 		XCUIApplication().buttons["middleRight"].tap()
+		
+		sleep(1)
 		
 		let elementsQuery = app.alerts["O wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["O wins!"].exists)
@@ -297,6 +321,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["topMiddle"].tap()
 		XCUIApplication().buttons["bottomRight"].tap()
 		
+		sleep(1)
+		
 		let elementsQuery = app.alerts["O wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["O wins!"].exists)
 		elementsQuery.buttons["Cancel"].tap()
@@ -315,6 +341,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["middleRight"].tap()
 		XCUIApplication().buttons["bottomLeft"].tap()
+		
+		sleep(1)
 		
 		let elementsQuery = app.alerts["O wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["O wins!"].exists)
@@ -335,6 +363,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["middleRight"].tap()
 		XCUIApplication().buttons["bottomMiddle"].tap()
 		
+		sleep(1)
+		
 		let elementsQuery = app.alerts["O wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["O wins!"].exists)
 		elementsQuery.buttons["Cancel"].tap()
@@ -353,6 +383,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["middleRight"].tap()
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["bottomRight"].tap()
+		
+		sleep(1)
 		
 		let elementsQuery = app.alerts["O wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["O wins!"].exists)
@@ -373,6 +405,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["middleRight"].tap()
 		XCUIApplication().buttons["bottomRight"].tap()
 		
+		sleep(1)
+		
 		let elementsQuery = app.alerts["O wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["O wins!"].exists)
 		elementsQuery.buttons["Cancel"].tap()
@@ -391,6 +425,8 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["center"].tap()
 		XCUIApplication().buttons["middleLeft"].tap()
 		XCUIApplication().buttons["bottomLeft"].tap()
+		
+		sleep(1)
 		
 		let elementsQuery = app.alerts["O wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["O wins!"].exists)
