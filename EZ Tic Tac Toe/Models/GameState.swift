@@ -59,7 +59,6 @@ class GameState: ObservableObject {
 	}
 	
 	///Determine the best move for the AI
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	///- Returns: The best position that the AI could make given the current board
 	func findBestMove() -> Position {
@@ -75,7 +74,7 @@ class GameState: ObservableObject {
 					let newPosition = Position.getCoordinate(x: col, y: row)
 					newBoard.setPosition(position: newPosition, value: .o)
 					
-					let result = GameState.minimax(newBoard, maximizing: false, originalPlayer: .o)
+					let result = GameState.minimax(newBoard, maximizing: false, originalPlayer: .o, depth: 0)
 					
 					if (result > bestCase) {
 						bestCase = result
@@ -97,19 +96,18 @@ class GameState: ObservableObject {
 	}
 	
 	///Evaluates the value of a board and how the game would play out after it.
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	///- Returns: The score of the board (number of games won - number of games lost)
-	static func minimax(_ board: GameState, maximizing: Bool, originalPlayer: PositionValue) -> Int {
+	static func minimax(_ board: GameState, maximizing: Bool, originalPlayer: PositionValue, depth: Int) -> Int {
 		//Base case: The board is full or a player has won. Return 1 if our player won, 0 if it was a tie, or -1 if our player lost
 		if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .x)
 			|| (board.evaluateCurrentBoard() == .oWins && originalPlayer == .o)) {
-			return 1
+			return 10 - depth
 		} else if (board.evaluateCurrentBoard() == .tie) {
 			return 0
 		} else if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .o)
 			|| (board.evaluateCurrentBoard() == .oWins && originalPlayer == .x)) {
-			return -1
+			return -1 + depth
 		}
 		
 		//Recursive Case: return the sum of the values of the rest of the board being played out.
@@ -124,7 +122,7 @@ class GameState: ObservableObject {
 					let newPosition = Position.getCoordinate(x: col, y: row)
 					newBoard.setPosition(position: newPosition, value: maximizing ? .o : .x)
 					
-					let result = minimax(newBoard, maximizing: maximizing ? false : true, originalPlayer: originalPlayer)
+					let result = minimax(newBoard, maximizing: maximizing ? false : true, originalPlayer: originalPlayer, depth: depth + 1)
 					evaluation += result
 				}
 			}
@@ -134,7 +132,6 @@ class GameState: ObservableObject {
 	}
 	
 	///Evaluates the current board to determine the appropriate BoardState
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	///- Returns: The new board state based on the current state of the board.
 	func evaluateCurrentBoard() -> BoardState {
@@ -150,7 +147,6 @@ class GameState: ObservableObject {
 	}
 	
 	///Checks if the player has won through any configuration
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	///- Parameter valueToLookFor: the player value to look for (ex: .x or .o)
 	///- Returns: Whether the player has won through any configuration
@@ -164,7 +160,6 @@ class GameState: ObservableObject {
 	}
 	
 	///Checks if the board has any empty positions remaining
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	///- Returns: Whether the entire board contains no empty positions
 	func evaluteTie() -> Bool {
@@ -180,7 +175,6 @@ class GameState: ObservableObject {
 	}
 	
 	///Checks if the player has won through any horizontal configuration
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	///- Parameter valueToLookFor: the player value to look for (ex: .x or .o)
 	///- Returns: Whether the player has won through any row
@@ -203,7 +197,6 @@ class GameState: ObservableObject {
 	}
 	
 	///Checks if the player has won through any vertical configuration
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	///- Parameter valueToLookFor: the player value to look for (ex: .x or .o)
 	///- Returns: Whether the player has won through any column
@@ -226,7 +219,6 @@ class GameState: ObservableObject {
 	}
 	
 	///Checks if the player has won through a diagonal configuration from the top left to the bottom right
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	///- Parameter valueToLookFor: the player value to look for (ex: .x or .o)
 	///- Returns: Whether the player has won through a diagonal configuration from the top left to the bottom right
@@ -242,7 +234,6 @@ class GameState: ObservableObject {
 	}
 	
 	///Checks if the player has won through a diagonal configuration from the top right to the bottom left
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	///- Parameter valueToLookFor: the player value to look for (ex: .x or .o)
 	///- Returns: Whether the player has won through a diagonal configuration from the top right to the bottom left
@@ -258,7 +249,6 @@ class GameState: ObservableObject {
 	}
 	
 	///Resets the game to the beginning position (xPlayerTurn to true, positionValues to empty, gameState to .empty)
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	func resetGame() {
 		var newPositionValues: [[PositionValue]] = []
@@ -275,7 +265,6 @@ class GameState: ObservableObject {
 	}
 	
 	///Sets board to given 2d array
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	func setBoard(positionValues: [[PositionValue]]) {
 		self.positionValues = positionValues

@@ -10,7 +10,7 @@ jobs:
     runs-on: macOS-latest
     strategy:
         matrix:
-            destination: ['platform=iOS Simulator,name=iPhone 8', 'platform=iOS Simulator,name=iPhone 8 Plus', 'platform=iOS Simulator,name=iPhone 11', 'platform=iOS Simulator,name=iPhone 11 Pro', 'platform=iOS Simulator,name=iPhone 11 Pro Max', 'platform=iOS Simulator,name=iPad Pro (9.7-inch)']
+            destination: ['platform=iOS Simulator,name=iPhone SE (2nd generation)', 'platform=iOS Simulator,name=iPhone 8', 'platform=iOS Simulator,name=iPhone 8 Plus', 'platform=iOS Simulator,name=iPhone 11', 'platform=iOS Simulator,name=iPhone 11 Pro', 'platform=iOS Simulator,name=iPhone 11 Pro Max', 'platform=iOS Simulator,name=iPad Pro (9.7-inch)']
     steps:
     - name: Checkout
       uses: actions/checkout@master

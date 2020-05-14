@@ -17,7 +17,6 @@ enum Position {
 	case bottomLeft, bottomMiddle, bottomRight
 	
 	///Returns coordinate in form (x,y), where x and y begin in the top left corner at (0,0) and increase as x and y approach the bottom right
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	var coordinate: (Int, Int) {
 		switch self {
@@ -34,7 +33,6 @@ enum Position {
 	}
 	
 	///Returns the string representation of the position's name
-	///- Author: Matt Geimer
 	///- Version: 1.0
 	var stringRepresentation: String {
 		switch self {
