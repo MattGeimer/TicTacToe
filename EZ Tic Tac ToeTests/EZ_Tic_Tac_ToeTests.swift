@@ -228,5 +228,18 @@ class EZTicTacToeTests: XCTestCase {
 		gameState.updateGameState()
 		XCTAssert(gameState!.gameState == .oWins)
 	}
+	
+	func testAIMakingWrongMove() {
+		gameState.setBoard(positionValues: [
+			[.o,.x,.empty],
+			[.empty,.x,.empty],
+			[.empty,.empty,.empty]
+		])
+		
+		let expectedMove: Position = .bottomMiddle
+		let actualMove: Position = gameState.findBestMove()
+		
+		XCTAssertEqual(expectedMove, actualMove)
+	}
 
 }
