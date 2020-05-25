@@ -229,7 +229,44 @@ class EZTicTacToeTests: XCTestCase {
 		XCTAssert(gameState!.gameState == .oWins)
 	}
 	
-	func testAIMakingWrongMove() {
+	/// Test how the AI reacts to the player starting in the center
+	func testAIMakingWrongMoveStageOne() {
+		gameState.setBoard(positionValues: [
+			[.empty,.empty,.empty],
+			[.empty,.x,.empty],
+			[.empty,.empty,.empty]
+		])
+		
+		let expectedMove: Position = .topLeft
+		var actualMove: Position?
+		
+		measure {
+			actualMove = gameState.findBestMove()
+		}
+		
+		XCTAssertEqual(expectedMove, actualMove)
+	}
+	
+	/// Test what happens after the user places an x in the opposing corner
+	func testAIMakingWrongMoveStageTwoDiagonal() {
+		gameState.setBoard(positionValues: [
+			[.o,.empty,.empty],
+			[.empty,.x,.empty],
+			[.empty,.empty,.x]
+		])
+		
+		let expectedMove: Position = .topRight
+		var actualMove: Position?
+		
+		measure {
+			actualMove = gameState.findBestMove()
+		}
+		
+		XCTAssertEqual(expectedMove, actualMove)
+	}
+	
+	/// Test what happens if the user places an x next to the previous o move
+	func testAIMakingWrongMoveStageTwoVertical() {
 		gameState.setBoard(positionValues: [
 			[.o,.x,.empty],
 			[.empty,.x,.empty],
@@ -237,9 +274,12 @@ class EZTicTacToeTests: XCTestCase {
 		])
 		
 		let expectedMove: Position = .bottomMiddle
-		let actualMove: Position = gameState.findBestMove()
+		var actualMove: Position?
+		
+		measure {
+			actualMove = gameState.findBestMove()
+		}
 		
 		XCTAssertEqual(expectedMove, actualMove)
 	}
-
 }

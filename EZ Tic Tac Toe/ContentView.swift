@@ -22,11 +22,11 @@ struct ContentView: View {
 					Spacer()
 					
 					Group {
-						NavigationLink(destination: SingleplayerView().environmentObject(GameState(singlePlayer: true))) {
+						NavigationLink(destination: GameView().environmentObject(GameState(singlePlayer: true))) {
 							TitleLabelView(labelText: "1 Player")
 								.accessibility(label: Text("singleplayer"))
 						}
-						NavigationLink(destination: MultiplayerView()
+						NavigationLink(destination: GameView()
 							.environmentObject(GameState(singlePlayer: false))) {
 							TitleLabelView(labelText: "2 Players")
 								.accessibility(label: Text("multiplayer"))

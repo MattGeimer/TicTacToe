@@ -20,8 +20,7 @@
 		22AEFB11245362F5008E04EB /* BoardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0D245362F5008E04EB /* BoardState.swift */; };
 		22AEFB1724536303008E04EB /* BoardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1224536303008E04EB /* BoardGridView.swift */; };
 		22AEFB1824536303008E04EB /* TitleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1324536303008E04EB /* TitleLabelView.swift */; };
-		22AEFB1924536303008E04EB /* MultiplayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1424536303008E04EB /* MultiplayerView.swift */; };
-		22AEFB1A24536303008E04EB /* SingleplayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1524536303008E04EB /* SingleplayerView.swift */; };
+		22AEFB1A24536303008E04EB /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1524536303008E04EB /* GameView.swift */; };
 		22AEFB1B24536303008E04EB /* PositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1624536303008E04EB /* PositionView.swift */; };
 		22AEFB23245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB22245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift */; };
 		22C8160D2454F16500644FD4 /* UserInterfaceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C8160C2454F16500644FD4 /* UserInterfaceEnum.swift */; };
@@ -62,8 +61,7 @@
 		22AEFB0D245362F5008E04EB /* BoardState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardState.swift; sourceTree = "<group>"; };
 		22AEFB1224536303008E04EB /* BoardGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardGridView.swift; sourceTree = "<group>"; };
 		22AEFB1324536303008E04EB /* TitleLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLabelView.swift; sourceTree = "<group>"; };
-		22AEFB1424536303008E04EB /* MultiplayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerView.swift; sourceTree = "<group>"; };
-		22AEFB1524536303008E04EB /* SingleplayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleplayerView.swift; sourceTree = "<group>"; };
+		22AEFB1524536303008E04EB /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		22AEFB1624536303008E04EB /* PositionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionView.swift; sourceTree = "<group>"; };
 		22AEFB20245363BA008E04EB /* EZ Tic Tac ToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EZ Tic Tac ToeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AEFB22245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZ_Tic_Tac_ToeTests.swift; sourceTree = "<group>"; };
@@ -165,9 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				22AEFB1224536303008E04EB /* BoardGridView.swift */,
-				22AEFB1424536303008E04EB /* MultiplayerView.swift */,
 				22AEFB1624536303008E04EB /* PositionView.swift */,
-				22AEFB1524536303008E04EB /* SingleplayerView.swift */,
+				22AEFB1524536303008E04EB /* GameView.swift */,
 				22AEFB1324536303008E04EB /* TitleLabelView.swift */,
 			);
 			path = SupportingViews;
@@ -322,10 +319,9 @@
 				22AEFB1B24536303008E04EB /* PositionView.swift in Sources */,
 				225452CB245361FB00D12A17 /* SceneDelegate.swift in Sources */,
 				22AEFB0F245362F5008E04EB /* Position.swift in Sources */,
-				22AEFB1A24536303008E04EB /* SingleplayerView.swift in Sources */,
+				22AEFB1A24536303008E04EB /* GameView.swift in Sources */,
 				225452CD245361FB00D12A17 /* ContentView.swift in Sources */,
 				22AEFB1724536303008E04EB /* BoardGridView.swift in Sources */,
-				22AEFB1924536303008E04EB /* MultiplayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -95,9 +95,14 @@ class GameState: ObservableObject {
 		return bestMove ?? Position.getCoordinate(x: col, y: row)
 	}
 	
-	///Evaluates the value of a board and how the game would play out after it.
-	///- Version: 1.0
-	///- Returns: The score of the board (number of games won - number of games lost)
+	/// Evaluates the value of a board and how the game would play out after it.
+	/// - Version: 1.0
+	/// - Parameters:
+	///   - board: The current board to evaluate
+	///   - maximizing: Whether the algorithm is maximizing or minimizing this turn (this is analagous to whether it's playing for the AI or the opponent)
+	///   - originalPlayer: Whether the AI is playing X's or O's
+	///   - depth: What number recursive call this is. This is used to compute how far out the algorithm is thinking, and to make moves that have benefits later on less valuable
+	/// - Returns: The score of the board (number of games won - number of games lost)
 	static func minimax(_ board: GameState, maximizing: Bool, originalPlayer: PositionValue, depth: Int) -> Int {
 		//Base case: The board is full or a player has won. Return 1 if our player won, 0 if it was a tie, or -1 if our player lost
 		if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .x)
@@ -110,6 +115,22 @@ class GameState: ObservableObject {
 			return -10 + depth
 		}
 		
+		var positionValueToPlace: PositionValue {
+			if originalPlayer == .o {
+				if maximizing {
+					return .o
+				} else {
+					return .x
+				}
+			} else {
+				if maximizing {
+					return .x
+				} else {
+					return .o
+				}
+			}
+		}
+		
 		//Recursive Case: return the sum of the values of the rest of the board being played out.
 		var evaluation = maximizing ? Int.min : Int.max
 		
@@ -120,7 +141,7 @@ class GameState: ObservableObject {
 					newBoard.setBoard(positionValues: board.positionValues)
 					
 					let newPosition = Position.getCoordinate(x: col, y: row)
-					newBoard.setPosition(position: newPosition, value: maximizing ? .o : .x)
+					newBoard.setPosition(position: newPosition, value: positionValueToPlace)
 					
 					let result = minimax(newBoard, maximizing: maximizing ? false : true, originalPlayer: originalPlayer, depth: depth + 1)
 					
