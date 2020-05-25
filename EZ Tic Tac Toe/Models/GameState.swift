@@ -107,11 +107,11 @@ class GameState: ObservableObject {
 			return 0
 		} else if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .o)
 			|| (board.evaluateCurrentBoard() == .oWins && originalPlayer == .x)) {
-			return -1 + depth
+			return -10 + depth
 		}
 		
 		//Recursive Case: return the sum of the values of the rest of the board being played out.
-		var evaluation = 0
+		var evaluation = maximizing ? Int.min : Int.max
 		
 		for row in 0 ..< board.numberOfRows {
 			for col in 0 ..< board.numberOfColumns {
@@ -123,7 +123,8 @@ class GameState: ObservableObject {
 					newBoard.setPosition(position: newPosition, value: maximizing ? .o : .x)
 					
 					let result = minimax(newBoard, maximizing: maximizing ? false : true, originalPlayer: originalPlayer, depth: depth + 1)
-					evaluation += result
+					
+					evaluation = maximizing ? max(result, evaluation) : min(result, evaluation)
 				}
 			}
 		}
