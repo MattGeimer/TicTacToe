@@ -18,7 +18,7 @@ class EZTicTacToeTests: XCTestCase {
 	
     override func setUp() {
 		super.setUp()
-		gameState = GameState(singlePlayer: false)
+		gameState = GameState(singlePlayer: false, difficulty: .medium)
     }
 
     override func tearDown() {

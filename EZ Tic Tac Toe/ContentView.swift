@@ -9,6 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
+	
+	let difficultyLevels: [DifficultyLevel] = [.easy, .medium, .hard]
+	
+	@State private var selectedDifficulty: DifficultyLevel = .easy
+	
 	var body: some View {
 		NavigationView {
 			ZStack {
@@ -22,17 +27,30 @@ struct ContentView: View {
 					Spacer()
 					
 					Group {
-						NavigationLink(destination: GameView().environmentObject(GameState(singlePlayer: true))) {
+						NavigationLink(destination: GameView().environmentObject(GameState(singlePlayer: true, difficulty: selectedDifficulty))) {
 							TitleLabelView(labelText: "1 Player")
 								.accessibility(label: Text("singleplayer"))
 						}
 						NavigationLink(destination: GameView()
-							.environmentObject(GameState(singlePlayer: false))) {
+							.environmentObject(GameState(singlePlayer: false, difficulty: selectedDifficulty))) {
 							TitleLabelView(labelText: "2 Players")
 								.accessibility(label: Text("multiplayer"))
 						}
 					}
 						.padding(25)
+					
+					
+					Group {
+						Text("AI Difficulty")
+						Picker(selection: $selectedDifficulty, label: Text("")) {
+							ForEach(difficultyLevels, id: \.self) { difficulty in
+								Text(difficulty.toString)
+							}.labelsHidden()
+						}
+						.pickerStyle(SegmentedPickerStyle())
+					}
+					.padding(.horizontal)
+					
 					Spacer()
 				}
 			}

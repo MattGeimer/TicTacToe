@@ -68,7 +68,7 @@ struct PositionView_Previews: PreviewProvider {
 			PositionView(position: .topLeft, positionValue: .empty, size: CGSize(width: 125, height: 125))
 				.previewLayout(.fixed(width: 150, height: 150))
 		}
-			.environmentObject(GameState(singlePlayer: false))
+			.environmentObject(GameState(singlePlayer: false, difficulty: .easy))
 			.environment(\.colorScheme, .dark)
     }
 }

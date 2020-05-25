@@ -19,10 +19,12 @@ class GameState: ObservableObject {
 	@Published var singlePlayer: Bool
 	@Published var xPlayerTurn: Bool = true
 	@Published var gameState: BoardState = .empty
+	@Published var difficulty: DifficultyLevel = .hard
 	var positionValues: [[PositionValue]] = [[.empty, .empty, .empty], [.empty, .empty, .empty], [.empty, .empty, .empty]]
 	
-	init(singlePlayer: Bool) {
+	init(singlePlayer: Bool, difficulty: DifficultyLevel) {
 		self.singlePlayer = singlePlayer
+		self.difficulty = difficulty
 	}
 	
 	///Take an input of which position was played, and if the position is empty, set its state to whichever player's turn it is
@@ -51,10 +53,30 @@ class GameState: ObservableObject {
 			xPlayerTurn.toggle()
 			
 			if (singlePlayer && !xPlayerTurn) {
-				let bestMove: Position = findBestMove()
-				self.setPosition(position: bestMove, value: .o)
+				let move: Position = getMoveForAI()
+				self.setPosition(position: move, value: .o)
 				updateGameState()
 			}
+		}
+	}
+	
+	/// Using the difficulty level, picks a move for the AI to make (uses random moves sometimes, even if they're not the best move)
+	/// - Returns: The move for the AI to make
+	func getMoveForAI() -> Position {
+		let randomMoveNumber = Double.random(in: 0 ... 1)
+		
+		if randomMoveNumber < difficulty.percentageRandomMoves {
+			var row = Int.random(in: 0 ..< numberOfRows)
+			var col = Int.random(in: 0 ..< numberOfColumns)
+			
+			while (positionValues[row][col] != .empty) {
+				row = Int.random(in: 0 ..< numberOfRows)
+				col = Int.random(in: 0 ..< numberOfColumns)
+			}
+			
+			return Position.getCoordinate(x: col, y: row)
+		} else {
+			return findBestMove()
 		}
 	}
 	
@@ -68,7 +90,7 @@ class GameState: ObservableObject {
 		for row in 0 ..< numberOfRows {
 			for col in 0 ..< numberOfColumns {
 				if (positionValues[row][col] == .empty) {
-					let newBoard = GameState(singlePlayer: true)
+					let newBoard = GameState(singlePlayer: true, difficulty: self.difficulty)
 					newBoard.setBoard(positionValues: positionValues)
 					
 					let newPosition = Position.getCoordinate(x: col, y: row)
@@ -137,7 +159,7 @@ class GameState: ObservableObject {
 		for row in 0 ..< board.numberOfRows {
 			for col in 0 ..< board.numberOfColumns {
 				if (board.positionValues[row][col] == .empty) {
-					let newBoard = GameState(singlePlayer: true)
+					let newBoard = GameState(singlePlayer: true, difficulty: board.difficulty)
 					newBoard.setBoard(positionValues: board.positionValues)
 					
 					let newPosition = Position.getCoordinate(x: col, y: row)

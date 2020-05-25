@@ -50,6 +50,6 @@ struct GameView_Previews: PreviewProvider {
             GameView()
                 .previewDevice(PreviewDevice(rawValue: deviceName))
         }
-			.environmentObject(GameState(singlePlayer: true))
+		.environmentObject(GameState(singlePlayer: true, difficulty: .easy))
     }
 }
