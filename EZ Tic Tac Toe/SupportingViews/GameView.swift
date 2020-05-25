@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SingleplayerView: View {
+struct GameView: View {
     @EnvironmentObject var gameState: GameState
 	let positions: [[Position]] = [[.topLeft, .topMiddle, .topRight], [.middleLeft, .center, .middleRight], [.bottomLeft, .bottomMiddle, .bottomRight]]
 	
@@ -18,7 +18,7 @@ struct SingleplayerView: View {
 		GeometryReader { geometry in
 			VStack {
 				Spacer()
-				TitleLabelView(labelText: "Single Player")
+				TitleLabelView(labelText: self.gameState.singlePlayer ? "Single Player" : "Multiplayer")
 					.padding()
 					.frame(width: geometry.size.width / (4/3), height: geometry.size.height / 10)
 					.accessibility(identifier: "titleLabel")
@@ -44,12 +44,12 @@ struct SingleplayerView: View {
     }
 }
 
-struct SingleplayerView_Previews: PreviewProvider {
+struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(["iPhone SE", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPad Pro (11-inch) (2nd generation)"], id: \.self) { deviceName in
-            SingleplayerView()
+            GameView()
                 .previewDevice(PreviewDevice(rawValue: deviceName))
         }
-			.environmentObject(GameState(singlePlayer: true))
+		.environmentObject(GameState(singlePlayer: true, difficulty: .easy))
     }
 }

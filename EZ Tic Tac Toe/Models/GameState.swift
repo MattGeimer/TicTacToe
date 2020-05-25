@@ -19,10 +19,12 @@ class GameState: ObservableObject {
 	@Published var singlePlayer: Bool
 	@Published var xPlayerTurn: Bool = true
 	@Published var gameState: BoardState = .empty
+	@Published var difficulty: DifficultyLevel = .hard
 	var positionValues: [[PositionValue]] = [[.empty, .empty, .empty], [.empty, .empty, .empty], [.empty, .empty, .empty]]
 	
-	init(singlePlayer: Bool) {
+	init(singlePlayer: Bool, difficulty: DifficultyLevel) {
 		self.singlePlayer = singlePlayer
+		self.difficulty = difficulty
 	}
 	
 	///Take an input of which position was played, and if the position is empty, set its state to whichever player's turn it is
@@ -51,10 +53,30 @@ class GameState: ObservableObject {
 			xPlayerTurn.toggle()
 			
 			if (singlePlayer && !xPlayerTurn) {
-				let bestMove: Position = findBestMove()
-				self.setPosition(position: bestMove, value: .o)
+				let move: Position = getMoveForAI()
+				self.setPosition(position: move, value: .o)
 				updateGameState()
 			}
+		}
+	}
+	
+	/// Using the difficulty level, picks a move for the AI to make (uses random moves sometimes, even if they're not the best move)
+	/// - Returns: The move for the AI to make
+	func getMoveForAI() -> Position {
+		let randomMoveNumber = Double.random(in: 0 ... 1)
+		
+		if randomMoveNumber < difficulty.percentageRandomMoves {
+			var row = Int.random(in: 0 ..< numberOfRows)
+			var col = Int.random(in: 0 ..< numberOfColumns)
+			
+			while (positionValues[row][col] != .empty) {
+				row = Int.random(in: 0 ..< numberOfRows)
+				col = Int.random(in: 0 ..< numberOfColumns)
+			}
+			
+			return Position.getCoordinate(x: col, y: row)
+		} else {
+			return findBestMove()
 		}
 	}
 	
@@ -68,7 +90,7 @@ class GameState: ObservableObject {
 		for row in 0 ..< numberOfRows {
 			for col in 0 ..< numberOfColumns {
 				if (positionValues[row][col] == .empty) {
-					let newBoard = GameState(singlePlayer: true)
+					let newBoard = GameState(singlePlayer: true, difficulty: self.difficulty)
 					newBoard.setBoard(positionValues: positionValues)
 					
 					let newPosition = Position.getCoordinate(x: col, y: row)
@@ -95,9 +117,14 @@ class GameState: ObservableObject {
 		return bestMove ?? Position.getCoordinate(x: col, y: row)
 	}
 	
-	///Evaluates the value of a board and how the game would play out after it.
-	///- Version: 1.0
-	///- Returns: The score of the board (number of games won - number of games lost)
+	/// Evaluates the value of a board and how the game would play out after it.
+	/// - Version: 1.0
+	/// - Parameters:
+	///   - board: The current board to evaluate
+	///   - maximizing: Whether the algorithm is maximizing or minimizing this turn (this is analagous to whether it's playing for the AI or the opponent)
+	///   - originalPlayer: Whether the AI is playing X's or O's
+	///   - depth: What number recursive call this is. This is used to compute how far out the algorithm is thinking, and to make moves that have benefits later on less valuable
+	/// - Returns: The score of the board (number of games won - number of games lost)
 	static func minimax(_ board: GameState, maximizing: Bool, originalPlayer: PositionValue, depth: Int) -> Int {
 		//Base case: The board is full or a player has won. Return 1 if our player won, 0 if it was a tie, or -1 if our player lost
 		if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .x)
@@ -107,23 +134,40 @@ class GameState: ObservableObject {
 			return 0
 		} else if ((board.evaluateCurrentBoard() == .xWins && originalPlayer == .o)
 			|| (board.evaluateCurrentBoard() == .oWins && originalPlayer == .x)) {
-			return -1 + depth
+			return -10 + depth
+		}
+		
+		var positionValueToPlace: PositionValue {
+			if originalPlayer == .o {
+				if maximizing {
+					return .o
+				} else {
+					return .x
+				}
+			} else {
+				if maximizing {
+					return .x
+				} else {
+					return .o
+				}
+			}
 		}
 		
 		//Recursive Case: return the sum of the values of the rest of the board being played out.
-		var evaluation = 0
+		var evaluation = maximizing ? Int.min : Int.max
 		
 		for row in 0 ..< board.numberOfRows {
 			for col in 0 ..< board.numberOfColumns {
 				if (board.positionValues[row][col] == .empty) {
-					let newBoard = GameState(singlePlayer: true)
+					let newBoard = GameState(singlePlayer: true, difficulty: board.difficulty)
 					newBoard.setBoard(positionValues: board.positionValues)
 					
 					let newPosition = Position.getCoordinate(x: col, y: row)
-					newBoard.setPosition(position: newPosition, value: maximizing ? .o : .x)
+					newBoard.setPosition(position: newPosition, value: positionValueToPlace)
 					
 					let result = minimax(newBoard, maximizing: maximizing ? false : true, originalPlayer: originalPlayer, depth: depth + 1)
-					evaluation += result
+					
+					evaluation = maximizing ? max(result, evaluation) : min(result, evaluation)
 				}
 			}
 		}
