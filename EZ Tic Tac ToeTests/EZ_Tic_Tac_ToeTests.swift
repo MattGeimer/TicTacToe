@@ -28,13 +28,13 @@ class EZTicTacToeTests: XCTestCase {
 
 	///Tests the receiveInput functionality
     func testReceiveInput() {
-		XCTAssertTrue(gameState.receiveInput(position: .topLeft))
-		XCTAssertFalse(gameState.receiveInput(position: .topLeft))
-		XCTAssertTrue(gameState.receiveInput(position: .topMiddle))
-		XCTAssertFalse(gameState.receiveInput(position: .topLeft))
-		XCTAssertTrue(gameState.receiveInput(position: .middleLeft))
-		XCTAssertTrue(gameState.receiveInput(position: .center))
-		XCTAssertTrue(gameState.receiveInput(position: .bottomLeft))
+		XCTAssertEqual(gameState.receiveInput(position: .topLeft), .success)
+		XCTAssertEqual(gameState.receiveInput(position: .topLeft), .occupied)
+		XCTAssertEqual(gameState.receiveInput(position: .topMiddle), .success)
+		XCTAssertEqual(gameState.receiveInput(position: .topLeft), .occupied)
+		XCTAssertEqual(gameState.receiveInput(position: .middleLeft), .success)
+		XCTAssertEqual(gameState.receiveInput(position: .center), .success)
+		XCTAssertEqual(gameState.receiveInput(position: .bottomLeft), .occupied)
 		XCTAssert(gameState!.gameState == .xWins)
     }
 	
