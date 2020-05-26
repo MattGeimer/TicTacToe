@@ -24,6 +24,8 @@
 		22AEFB1A24536303008E04EB /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1524536303008E04EB /* GameView.swift */; };
 		22AEFB1B24536303008E04EB /* PositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1624536303008E04EB /* PositionView.swift */; };
 		22AEFB23245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB22245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift */; };
+		22BC32F0247D6F7100AD655F /* InputResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC32EF247D6F7100AD655F /* InputResult.swift */; };
+		22BC32F2247D6F8500AD655F /* DifficultyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC32F1247D6F8500AD655F /* DifficultyMenu.swift */; };
 		22C8160D2454F16500644FD4 /* UserInterfaceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C8160C2454F16500644FD4 /* UserInterfaceEnum.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,8 @@
 		22AEFB20245363BA008E04EB /* EZ Tic Tac ToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EZ Tic Tac ToeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AEFB22245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZ_Tic_Tac_ToeTests.swift; sourceTree = "<group>"; };
 		22AEFB24245363BA008E04EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22BC32EF247D6F7100AD655F /* InputResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputResult.swift; sourceTree = "<group>"; };
+		22BC32F1247D6F8500AD655F /* DifficultyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyMenu.swift; sourceTree = "<group>"; };
 		22C8160C2454F16500644FD4 /* UserInterfaceEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +162,7 @@
 				22AEFB0C245362F5008E04EB /* PositionValue.swift */,
 				22C8160C2454F16500644FD4 /* UserInterfaceEnum.swift */,
 				22946DFA247C4F6F00F845AD /* DifficultyLevel.swift */,
+				22BC32EF247D6F7100AD655F /* InputResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -165,9 +170,10 @@
 		22AEFB09245362BD008E04EB /* SupportingViews */ = {
 			isa = PBXGroup;
 			children = (
+				22BC32F1247D6F8500AD655F /* DifficultyMenu.swift */,
+				22AEFB1524536303008E04EB /* GameView.swift */,
 				22AEFB1224536303008E04EB /* BoardGridView.swift */,
 				22AEFB1624536303008E04EB /* PositionView.swift */,
-				22AEFB1524536303008E04EB /* GameView.swift */,
 				22AEFB1324536303008E04EB /* TitleLabelView.swift */,
 			);
 			path = SupportingViews;
@@ -318,6 +324,8 @@
 				22AEFB0E245362F5008E04EB /* GameState.swift in Sources */,
 				22AEFB1824536303008E04EB /* TitleLabelView.swift in Sources */,
 				22AEFB10245362F5008E04EB /* PositionValue.swift in Sources */,
+				22BC32F0247D6F7100AD655F /* InputResult.swift in Sources */,
+				22BC32F2247D6F8500AD655F /* DifficultyMenu.swift in Sources */,
 				22C8160D2454F16500644FD4 /* UserInterfaceEnum.swift in Sources */,
 				22AEFB1B24536303008E04EB /* PositionView.swift in Sources */,
 				225452CB245361FB00D12A17 /* SceneDelegate.swift in Sources */,

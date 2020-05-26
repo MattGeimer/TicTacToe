@@ -30,20 +30,22 @@ class GameState: ObservableObject {
 	///Take an input of which position was played, and if the position is empty, set its state to whichever player's turn it is
 	///- Parameter position: the position to be played as an enum (ex: .topLeft)
 	///- Returns: true if position can be played, false otherwise
-	func receiveInput(position: Position) -> Bool {
+	func receiveInput(position: Position) -> InputResult {
 		guard positionValues[position.coordinate.1][position.coordinate.0] == .empty else {
-			return false
+			return .occupied
 		}
 		
 		if xPlayerTurn {
 			positionValues[position.coordinate.1][position.coordinate.0] = .x
-		} else {
+		} else if !singlePlayer {
 			positionValues[position.coordinate.1][position.coordinate.0] = .o
+		} else {
+			return .notPlayerTurn
 		}
 		
 		updateGameState()
 		
-		return true
+		return .success
 	}
 	
 	///Evaluates the current board to determine current game state, then determines whether to toggle which player's turn it is
@@ -53,9 +55,13 @@ class GameState: ObservableObject {
 			xPlayerTurn.toggle()
 			
 			if (singlePlayer && !xPlayerTurn) {
-				let move: Position = getMoveForAI()
-				self.setPosition(position: move, value: .o)
-				updateGameState()
+				DispatchQueue(label: "Minimax", qos: .userInitiated).async {
+					let move: Position = self.getMoveForAI()
+					DispatchQueue.main.async {
+						self.setPosition(position: move, value: .o)
+						self.updateGameState()
+					}
+				}
 			}
 		}
 	}
