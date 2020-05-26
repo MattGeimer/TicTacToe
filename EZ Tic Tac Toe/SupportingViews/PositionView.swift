@@ -19,16 +19,21 @@ struct PositionView: View {
 	@State private var presentAlert: Bool = false
 	@State var alertTitle: String = ""
 	@State var alertMessage: String = ""
+	
 	var size: CGSize
 	
     var body: some View {
 		Button(action: {
-			let validMove = self.gameState.receiveInput(position: self.position)
+			let inputResult = self.gameState.receiveInput(position: self.position)
 			
 			//Attempt to play the position, if the position cannot be played, set variable to show alert
-			if validMove == false {
+			if inputResult == .occupied {
 				self.alertTitle = "Move Invalid"
 				self.alertMessage = "A player has already used this position"
+				self.presentAlert = true
+			} else if inputResult == .notPlayerTurn {
+				self.alertTitle = "Not your turn"
+				self.alertMessage = "The AI is currently attempting to make its move"
 				self.presentAlert = true
 			} else if self.gameState.gameState == .xWins {
 				self.alertTitle = "X wins!"
