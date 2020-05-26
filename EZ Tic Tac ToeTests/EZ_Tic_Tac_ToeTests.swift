@@ -34,7 +34,7 @@ class EZTicTacToeTests: XCTestCase {
 		XCTAssertEqual(gameState.receiveInput(position: .topLeft), .occupied)
 		XCTAssertEqual(gameState.receiveInput(position: .middleLeft), .success)
 		XCTAssertEqual(gameState.receiveInput(position: .center), .success)
-		XCTAssertEqual(gameState.receiveInput(position: .bottomLeft), .occupied)
+		XCTAssertEqual(gameState.receiveInput(position: .bottomLeft), .success)
 		XCTAssert(gameState!.gameState == .xWins)
     }
 	
