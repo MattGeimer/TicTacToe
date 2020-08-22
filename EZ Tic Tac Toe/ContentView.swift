@@ -36,6 +36,10 @@ struct ContentView: View {
 						.padding(25)
 					
 					Spacer()
+                    NavigationLink(destination: CreditView()) {
+                        Text("Credits")
+                    }
+                        .padding(15)
 				}
 			}
 		}
