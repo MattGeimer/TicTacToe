@@ -174,10 +174,10 @@
 		22AEFB09245362BD008E04EB /* SupportingViews */ = {
 			isa = PBXGroup;
 			children = (
+				22AEFB1224536303008E04EB /* BoardGridView.swift */,
 				226BD30D24F163F8001E1AAC /* CreditView.swift */,
 				22BC32F1247D6F8500AD655F /* DifficultyMenu.swift */,
 				22AEFB1524536303008E04EB /* GameView.swift */,
-				22AEFB1224536303008E04EB /* BoardGridView.swift */,
 				22AEFB1624536303008E04EB /* PositionView.swift */,
 				22AEFB1324536303008E04EB /* TitleLabelView.swift */,
 				221A6E8624F164B100137EC2 /* PersonView.swift */,
