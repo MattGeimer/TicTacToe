@@ -13,6 +13,7 @@ struct CreditView: View {
         VStack {
             Text("Development Team")
                 .font(.title)
+                .padding(.top)
             PersonView(name: "Matt Geimer", role: "Developer", imagePath: "mattGeimer")
             PersonView(name: "Bill Yen", role: "Artist", imagePath: "billYen")
             VStack {

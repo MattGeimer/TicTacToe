@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showingCredits = false
 	
 	var body: some View {
 		NavigationView {
@@ -36,10 +38,15 @@ struct ContentView: View {
 						.padding(25)
 					
 					Spacer()
-                    NavigationLink(destination: CreditView()) {
+                    Button(action: {
+                        self.showingCredits.toggle()
+                    }) {
                         Text("Credits")
                     }
                         .padding(15)
+                        .sheet(isPresented: $showingCredits) {
+                                CreditView()
+                        }
 				}
 			}
 		}

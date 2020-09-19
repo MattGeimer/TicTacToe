@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		221A6E8724F164B100137EC2 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A6E8624F164B100137EC2 /* PersonView.swift */; };
-		225452C9245361FB00D12A17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225452C8245361FB00D12A17 /* AppDelegate.swift */; };
-		225452CB245361FB00D12A17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225452CA245361FB00D12A17 /* SceneDelegate.swift */; };
 		225452CD245361FB00D12A17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225452CC245361FB00D12A17 /* ContentView.swift */; };
 		225452CF245361FC00D12A17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225452CE245361FC00D12A17 /* Assets.xcassets */; };
 		225452D2245361FC00D12A17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225452D1245361FC00D12A17 /* Preview Assets.xcassets */; };
-		225452D5245361FC00D12A17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225452D3245361FC00D12A17 /* LaunchScreen.storyboard */; };
 		225452EB245361FC00D12A17 /* EZ_Tic_Tac_ToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225452EA245361FC00D12A17 /* EZ_Tic_Tac_ToeUITests.swift */; };
 		226BD30E24F163F9001E1AAC /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BD30D24F163F8001E1AAC /* CreditView.swift */; };
+		2275731E251698860003A850 /* TicTacToe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275731D251698860003A850 /* TicTacToe.swift */; };
+		2275731F251698860003A850 /* TicTacToe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275731D251698860003A850 /* TicTacToe.swift */; };
+		22757320251698860003A850 /* TicTacToe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275731D251698860003A850 /* TicTacToe.swift */; };
 		22946DFB247C4F6F00F845AD /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22946DFA247C4F6F00F845AD /* DifficultyLevel.swift */; };
 		22AEFB0E245362F5008E04EB /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0A245362F5008E04EB /* GameState.swift */; };
 		22AEFB0F245362F5008E04EB /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0B245362F5008E04EB /* Position.swift */; };
@@ -51,17 +51,15 @@
 /* Begin PBXFileReference section */
 		221A6E8624F164B100137EC2 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 		225452C5245361FB00D12A17 /* EZ Tic Tac Toe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EZ Tic Tac Toe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		225452C8245361FB00D12A17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		225452CA245361FB00D12A17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		225452CC245361FB00D12A17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		225452CE245361FC00D12A17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225452D1245361FC00D12A17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		225452D4245361FC00D12A17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225452D6245361FC00D12A17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		225452E6245361FC00D12A17 /* EZ Tic Tac ToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EZ Tic Tac ToeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		225452EA245361FC00D12A17 /* EZ_Tic_Tac_ToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZ_Tic_Tac_ToeUITests.swift; sourceTree = "<group>"; };
 		225452EC245361FC00D12A17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		226BD30D24F163F8001E1AAC /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
+		2275731D251698860003A850 /* TicTacToe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToe.swift; sourceTree = "<group>"; };
 		22946DFA247C4F6F00F845AD /* DifficultyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevel.swift; sourceTree = "<group>"; };
 		22AEFB0A245362F5008E04EB /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		22AEFB0B245362F5008E04EB /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
@@ -127,13 +125,11 @@
 		225452C7245361FB00D12A17 /* EZ Tic Tac Toe */ = {
 			isa = PBXGroup;
 			children = (
-				225452C8245361FB00D12A17 /* AppDelegate.swift */,
-				225452CA245361FB00D12A17 /* SceneDelegate.swift */,
+				2275731D251698860003A850 /* TicTacToe.swift */,
 				225452CC245361FB00D12A17 /* ContentView.swift */,
 				22AEFB08245362AB008E04EB /* Models */,
 				22AEFB09245362BD008E04EB /* SupportingViews */,
 				225452CE245361FC00D12A17 /* Assets.xcassets */,
-				225452D3245361FC00D12A17 /* LaunchScreen.storyboard */,
 				225452D6245361FC00D12A17 /* Info.plist */,
 				225452D0245361FC00D12A17 /* Preview Content */,
 			);
@@ -298,7 +294,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				225452D5245361FC00D12A17 /* LaunchScreen.storyboard in Resources */,
 				225452D2245361FC00D12A17 /* Preview Assets.xcassets in Resources */,
 				225452CF245361FC00D12A17 /* Assets.xcassets in Resources */,
 			);
@@ -327,7 +322,6 @@
 			files = (
 				22AEFB11245362F5008E04EB /* BoardState.swift in Sources */,
 				226BD30E24F163F9001E1AAC /* CreditView.swift in Sources */,
-				225452C9245361FB00D12A17 /* AppDelegate.swift in Sources */,
 				22AEFB0E245362F5008E04EB /* GameState.swift in Sources */,
 				22AEFB1824536303008E04EB /* TitleLabelView.swift in Sources */,
 				22AEFB10245362F5008E04EB /* PositionValue.swift in Sources */,
@@ -335,8 +329,8 @@
 				22BC32F0247D6F7100AD655F /* InputResult.swift in Sources */,
 				22BC32F2247D6F8500AD655F /* DifficultyMenu.swift in Sources */,
 				22C8160D2454F16500644FD4 /* UserInterfaceEnum.swift in Sources */,
+				2275731E251698860003A850 /* TicTacToe.swift in Sources */,
 				22AEFB1B24536303008E04EB /* PositionView.swift in Sources */,
-				225452CB245361FB00D12A17 /* SceneDelegate.swift in Sources */,
 				22AEFB0F245362F5008E04EB /* Position.swift in Sources */,
 				22AEFB1A24536303008E04EB /* GameView.swift in Sources */,
 				22946DFB247C4F6F00F845AD /* DifficultyLevel.swift in Sources */,
@@ -349,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2275731F251698860003A850 /* TicTacToe.swift in Sources */,
 				225452EB245361FC00D12A17 /* EZ_Tic_Tac_ToeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22757320251698860003A850 /* TicTacToe.swift in Sources */,
 				22AEFB23245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,17 +371,6 @@
 			targetProxy = 22AEFB25245363BA008E04EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		225452D3245361FC00D12A17 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				225452D4245361FC00D12A17 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		225452ED245361FC00D12A17 /* Debug */ = {
@@ -509,12 +494,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"EZ Tic Tac Toe/Preview Content\"";
 				DEVELOPMENT_TEAM = K54AYNFVDJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "EZ Tic Tac Toe/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,12 +517,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"EZ Tic Tac Toe/Preview Content\"";
 				DEVELOPMENT_TEAM = K54AYNFVDJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "EZ Tic Tac Toe/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
