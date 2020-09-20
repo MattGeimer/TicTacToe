@@ -38,8 +38,7 @@ struct GameView: View {
             }
             
             if !gameState.xPlayerTurn && gameState.singlePlayer {
-                ProgressView("AI Thinking", value: gameState.aiSolutionProgress, total: 1)
-                    .animation(.easeInOut)
+                ProgressView("AI Thinking")
             }
             
             Spacer()
