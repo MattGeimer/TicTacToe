@@ -15,32 +15,37 @@ struct GameView: View {
 	let boardAdjustmentConstant: CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? 1 : 6/8
 	
     var body: some View {
-		GeometryReader { geometry in
-			VStack {
-				Spacer()
-				TitleLabelView(labelText: self.gameState.singlePlayer ? "Single Player" : "Multiplayer")
-					.padding()
-					.frame(width: geometry.size.width / (4/3), height: geometry.size.height / 10)
-					.accessibility(identifier: "titleLabel")
-				
-				BoardGridView(positions: self.positions)
-				.frame(width: geometry.size.width < geometry.size.height ? geometry.size.width * self.boardAdjustmentConstant : geometry.size.height * self.boardAdjustmentConstant, height: geometry.size.width < geometry.size.height ? geometry.size.width * self.boardAdjustmentConstant : geometry.size.height * self.boardAdjustmentConstant)
-				.environmentObject(self.gameState)
-				
-				if self.gameState.gameState != .ongoing && self.gameState.gameState != .empty {
-					Button(action: {
-						self.gameState.resetGame()
-					}) {
-						TitleLabelView(labelText: "New Game")
-							.padding()
-							.accessibility(identifier: "newGameButton")
-					}
-				}
-				Spacer()
-			}
-				.background(Color("backgroundColor"))
-				.edgesIgnoringSafeArea(.all)
-		}
+        VStack(alignment: .center) {
+            Spacer()
+                .frame(height: UIScreen.main.bounds.size.height / 5, alignment: .center)
+            TitleLabelView(labelText: self.gameState.singlePlayer ? "Single Player" : "Multiplayer")
+                .padding()
+                .frame(width: UIScreen.main.bounds.size.width / (4/3), height: UIScreen.main.bounds.size.height / 10)
+                .accessibility(identifier: "titleLabel")
+            
+            BoardGridView(positions: self.positions)
+            .frame(width: UIScreen.main.bounds.size.width < UIScreen.main.bounds.size.height ? UIScreen.main.bounds.size.width * self.boardAdjustmentConstant : UIScreen.main.bounds.size.height * self.boardAdjustmentConstant, height: UIScreen.main.bounds.size.width < UIScreen.main.bounds.size.height ? UIScreen.main.bounds.size.width * self.boardAdjustmentConstant : UIScreen.main.bounds.size.height * self.boardAdjustmentConstant)
+            .environmentObject(self.gameState)
+            
+            if self.gameState.gameState != .ongoing && self.gameState.gameState != .empty {
+                Button(action: {
+                    self.gameState.resetGame()
+                }) {
+                    TitleLabelView(labelText: "New Game")
+                        .padding()
+                        .accessibility(identifier: "newGameButton")
+                }
+            }
+            
+            if !gameState.xPlayerTurn && gameState.singlePlayer {
+                ProgressView("AI Thinking", value: gameState.aiSolutionProgress, total: 1)
+                    .animation(.easeInOut)
+            }
+            
+            Spacer()
+        }
+            .background(Color("backgroundColor"))
+            .edgesIgnoringSafeArea(.all)
     }
 }
 

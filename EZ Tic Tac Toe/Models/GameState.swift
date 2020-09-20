@@ -20,6 +20,7 @@ class GameState: ObservableObject {
 	@Published var xPlayerTurn: Bool = true
 	@Published var gameState: BoardState = .empty
 	@Published var difficulty: DifficultyLevel = .hard
+    @Published var aiSolutionProgress: Double = 0
 	var positionValues: [[PositionValue]] = [[.empty, .empty, .empty], [.empty, .empty, .empty], [.empty, .empty, .empty]]
 	
 	init(singlePlayer: Bool, difficulty: DifficultyLevel) {
@@ -92,6 +93,10 @@ class GameState: ObservableObject {
 	func findBestMove() -> Position {
 		var bestCase = Int.min
 		var bestMove:Position?
+        
+        DispatchQueue.main.async {
+            self.aiSolutionProgress = 0
+        }
 		
 		for row in 0 ..< numberOfRows {
 			for col in 0 ..< numberOfColumns {
@@ -108,6 +113,10 @@ class GameState: ObservableObject {
 						bestCase = result
 						bestMove = Position.getCoordinate(x: col, y: row)
 					}
+                    
+                    DispatchQueue.main.async {
+                        self.aiSolutionProgress += 1.0 / Double(self.numberOfRows * self.numberOfColumns)
+                    }
 				}
 			}
 		}
