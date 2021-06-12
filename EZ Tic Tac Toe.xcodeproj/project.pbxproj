@@ -12,6 +12,36 @@
 		225452CF245361FC00D12A17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225452CE245361FC00D12A17 /* Assets.xcassets */; };
 		225452D2245361FC00D12A17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225452D1245361FC00D12A17 /* Preview Assets.xcassets */; };
 		225452EB245361FC00D12A17 /* EZ_Tic_Tac_ToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225452EA245361FC00D12A17 /* EZ_Tic_Tac_ToeUITests.swift */; };
+		2268CA242673DD31008A7DD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225452CC245361FB00D12A17 /* ContentView.swift */; };
+		2268CA252673DD32008A7DD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225452CC245361FB00D12A17 /* ContentView.swift */; };
+		2268CA262673DD3F008A7DD7 /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BD30D24F163F8001E1AAC /* CreditView.swift */; };
+		2268CA272673DD3F008A7DD7 /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BD30D24F163F8001E1AAC /* CreditView.swift */; };
+		2268CA282673DD47008A7DD7 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A6E8624F164B100137EC2 /* PersonView.swift */; };
+		2268CA292673DD48008A7DD7 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A6E8624F164B100137EC2 /* PersonView.swift */; };
+		2268CA2A2673DD52008A7DD7 /* PositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1624536303008E04EB /* PositionView.swift */; };
+		2268CA2B2673DD52008A7DD7 /* TitleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1324536303008E04EB /* TitleLabelView.swift */; };
+		2268CA2C2673DD52008A7DD7 /* DifficultyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC32F1247D6F8500AD655F /* DifficultyMenu.swift */; };
+		2268CA2D2673DD52008A7DD7 /* BoardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1224536303008E04EB /* BoardGridView.swift */; };
+		2268CA2E2673DD52008A7DD7 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1524536303008E04EB /* GameView.swift */; };
+		2268CA2F2673DD52008A7DD7 /* PositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1624536303008E04EB /* PositionView.swift */; };
+		2268CA302673DD52008A7DD7 /* TitleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1324536303008E04EB /* TitleLabelView.swift */; };
+		2268CA312673DD52008A7DD7 /* DifficultyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC32F1247D6F8500AD655F /* DifficultyMenu.swift */; };
+		2268CA322673DD52008A7DD7 /* BoardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1224536303008E04EB /* BoardGridView.swift */; };
+		2268CA332673DD52008A7DD7 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB1524536303008E04EB /* GameView.swift */; };
+		2268CA342673DD60008A7DD7 /* BoardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0D245362F5008E04EB /* BoardState.swift */; };
+		2268CA352673DD60008A7DD7 /* PositionValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0C245362F5008E04EB /* PositionValue.swift */; };
+		2268CA362673DD60008A7DD7 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0B245362F5008E04EB /* Position.swift */; };
+		2268CA372673DD60008A7DD7 /* UserInterfaceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C8160C2454F16500644FD4 /* UserInterfaceEnum.swift */; };
+		2268CA382673DD60008A7DD7 /* InputResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC32EF247D6F7100AD655F /* InputResult.swift */; };
+		2268CA392673DD60008A7DD7 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0A245362F5008E04EB /* GameState.swift */; };
+		2268CA3A2673DD60008A7DD7 /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22946DFA247C4F6F00F845AD /* DifficultyLevel.swift */; };
+		2268CA3B2673DD61008A7DD7 /* BoardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0D245362F5008E04EB /* BoardState.swift */; };
+		2268CA3C2673DD61008A7DD7 /* PositionValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0C245362F5008E04EB /* PositionValue.swift */; };
+		2268CA3D2673DD61008A7DD7 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0B245362F5008E04EB /* Position.swift */; };
+		2268CA3E2673DD61008A7DD7 /* UserInterfaceEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C8160C2454F16500644FD4 /* UserInterfaceEnum.swift */; };
+		2268CA3F2673DD61008A7DD7 /* InputResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC32EF247D6F7100AD655F /* InputResult.swift */; };
+		2268CA402673DD61008A7DD7 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEFB0A245362F5008E04EB /* GameState.swift */; };
+		2268CA412673DD61008A7DD7 /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22946DFA247C4F6F00F845AD /* DifficultyLevel.swift */; };
 		226BD30E24F163F9001E1AAC /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226BD30D24F163F8001E1AAC /* CreditView.swift */; };
 		2275731E251698860003A850 /* TicTacToe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275731D251698860003A850 /* TicTacToe.swift */; };
 		2275731F251698860003A850 /* TicTacToe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275731D251698860003A850 /* TicTacToe.swift */; };
@@ -58,6 +88,7 @@
 		225452E6245361FC00D12A17 /* EZ Tic Tac ToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EZ Tic Tac ToeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		225452EA245361FC00D12A17 /* EZ_Tic_Tac_ToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZ_Tic_Tac_ToeUITests.swift; sourceTree = "<group>"; };
 		225452EC245361FC00D12A17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2268CA422673DE8C008A7DD7 /* EZ Tic Tac Toe.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "EZ Tic Tac Toe.xctestplan"; sourceTree = "<group>"; };
 		226BD30D24F163F8001E1AAC /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
 		2275731D251698860003A850 /* TicTacToe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToe.swift; sourceTree = "<group>"; };
 		22946DFA247C4F6F00F845AD /* DifficultyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevel.swift; sourceTree = "<group>"; };
@@ -108,6 +139,7 @@
 				225452C7245361FB00D12A17 /* EZ Tic Tac Toe */,
 				225452E9245361FC00D12A17 /* EZ Tic Tac ToeUITests */,
 				22AEFB21245363BA008E04EB /* EZ Tic Tac ToeTests */,
+				2268CA422673DE8C008A7DD7 /* EZ Tic Tac Toe.xctestplan */,
 				225452C6245361FB00D12A17 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -343,8 +375,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2268CA282673DD47008A7DD7 /* PersonView.swift in Sources */,
 				2275731F251698860003A850 /* TicTacToe.swift in Sources */,
+				2268CA2B2673DD52008A7DD7 /* TitleLabelView.swift in Sources */,
+				2268CA382673DD60008A7DD7 /* InputResult.swift in Sources */,
+				2268CA262673DD3F008A7DD7 /* CreditView.swift in Sources */,
+				2268CA392673DD60008A7DD7 /* GameState.swift in Sources */,
+				2268CA2E2673DD52008A7DD7 /* GameView.swift in Sources */,
 				225452EB245361FC00D12A17 /* EZ_Tic_Tac_ToeUITests.swift in Sources */,
+				2268CA242673DD31008A7DD7 /* ContentView.swift in Sources */,
+				2268CA362673DD60008A7DD7 /* Position.swift in Sources */,
+				2268CA342673DD60008A7DD7 /* BoardState.swift in Sources */,
+				2268CA372673DD60008A7DD7 /* UserInterfaceEnum.swift in Sources */,
+				2268CA352673DD60008A7DD7 /* PositionValue.swift in Sources */,
+				2268CA2D2673DD52008A7DD7 /* BoardGridView.swift in Sources */,
+				2268CA3A2673DD60008A7DD7 /* DifficultyLevel.swift in Sources */,
+				2268CA2A2673DD52008A7DD7 /* PositionView.swift in Sources */,
+				2268CA2C2673DD52008A7DD7 /* DifficultyMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,8 +399,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2268CA292673DD48008A7DD7 /* PersonView.swift in Sources */,
 				22757320251698860003A850 /* TicTacToe.swift in Sources */,
+				2268CA302673DD52008A7DD7 /* TitleLabelView.swift in Sources */,
+				2268CA3F2673DD61008A7DD7 /* InputResult.swift in Sources */,
+				2268CA272673DD3F008A7DD7 /* CreditView.swift in Sources */,
+				2268CA402673DD61008A7DD7 /* GameState.swift in Sources */,
+				2268CA332673DD52008A7DD7 /* GameView.swift in Sources */,
 				22AEFB23245363BA008E04EB /* EZ_Tic_Tac_ToeTests.swift in Sources */,
+				2268CA252673DD32008A7DD7 /* ContentView.swift in Sources */,
+				2268CA3D2673DD61008A7DD7 /* Position.swift in Sources */,
+				2268CA3B2673DD61008A7DD7 /* BoardState.swift in Sources */,
+				2268CA3E2673DD61008A7DD7 /* UserInterfaceEnum.swift in Sources */,
+				2268CA3C2673DD61008A7DD7 /* PositionValue.swift in Sources */,
+				2268CA322673DD52008A7DD7 /* BoardGridView.swift in Sources */,
+				2268CA412673DD61008A7DD7 /* DifficultyLevel.swift in Sources */,
+				2268CA2F2673DD52008A7DD7 /* PositionView.swift in Sources */,
+				2268CA312673DD52008A7DD7 /* DifficultyMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,7 +561,7 @@
 				DEVELOPMENT_TEAM = K54AYNFVDJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "EZ Tic Tac Toe/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -522,7 +584,7 @@
 				DEVELOPMENT_TEAM = K54AYNFVDJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "EZ Tic Tac Toe/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -542,6 +604,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K54AYNFVDJ;
 				INFOPLIST_FILE = "EZ Tic Tac ToeUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -562,6 +625,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K54AYNFVDJ;
 				INFOPLIST_FILE = "EZ Tic Tac ToeUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -582,6 +646,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K54AYNFVDJ;
 				INFOPLIST_FILE = "EZ Tic Tac ToeTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,6 +667,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K54AYNFVDJ;
 				INFOPLIST_FILE = "EZ Tic Tac ToeTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
