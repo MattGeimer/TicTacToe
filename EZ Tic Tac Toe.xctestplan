@@ -1,0 +1,39 @@
+{
+  "configurations" : [
+    {
+      "id" : "57A68704-DACA-49A2-95F3-3137220F50A8",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:EZ Tic Tac Toe.xcodeproj",
+      "identifier" : "225452C4245361FB00D12A17",
+      "name" : "EZ Tic Tac Toe"
+    },
+    "testExecutionOrdering" : "random",
+    "uiTestingScreenshotsLifetime" : "keepAlways"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:EZ Tic Tac Toe.xcodeproj",
+        "identifier" : "225452E5245361FC00D12A17",
+        "name" : "EZ Tic Tac ToeUITests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:EZ Tic Tac Toe.xcodeproj",
+        "identifier" : "22AEFB1F245363BA008E04EB",
+        "name" : "EZ Tic Tac ToeTests"
+      }
+    }
+  ],
+  "version" : 1
+}
