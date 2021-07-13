@@ -1,8 +1,8 @@
-name: Master UI/Unit Tests
+name: Main UI/Unit Tests
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   test:
@@ -13,7 +13,7 @@ jobs:
             destination: ['platform=iOS Simulator,name=iPad (8th generation)', 'platform=iOS Simulator,name=iPad Air (4th generation)', 'platform=iOS Simulator,name=iPad Pro (9.7-inch)', 'platform=iOS Simulator,name=iPad Pro (11-inch) (2nd generation)', 'platform=iOS Simulator,name=iPad Pro (12.9-inch) (4th generation)', 'platform=iOS Simulator,name=iPhone 8', 'platform=iOS Simulator,name=iPhone 8 Plus', 'platform=iOS Simulator,name=iPhone 11', 'platform=iOS Simulator,name=iPhone 11 Pro', 'platform=iOS Simulator,name=iPhone 11 Pro Max', 'platform=iOS Simulator,name=iPhone 12', 'platform=iOS Simulator,name=iPhone 12 Pro', 'platform=iOS Simulator,name=iPhone 12 Pro Max', 'platform=iOS Simulator,name=iPhone 12 mini', 'platform=iOS Simulator,name=iPhone SE (2nd generation)']
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: Build Project
       run: xcodebuild clean build-for-testing -scheme "EZ Tic Tac Toe" -destination "${{matrix.destination}}"
     - name: Run Unit Tests
