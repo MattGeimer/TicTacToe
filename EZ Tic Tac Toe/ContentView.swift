@@ -35,8 +35,8 @@ struct ContentView: View {
 								.accessibility(label: Text("multiplayer"))
 						}
 					}
-						.padding(25)
-					
+                    .padding(4)  //3M: Associated items should be grouped closer together when there are other elements on the screen
+
 					Spacer()
                     Button(action: {
                         self.showingCredits.toggle()

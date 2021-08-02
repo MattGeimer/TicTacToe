@@ -16,7 +16,7 @@ struct DifficultyMenu: View {
 		VStack {
 			ForEach(difficultyLevels, id: \.self) { difficulty in
 				NavigationLink(destination: GameView().environmentObject(GameState(singlePlayer: true, difficulty: difficulty))) {
-					TitleLabelView(labelText: difficulty.toString)
+					TitleLabelView(labelText: difficulty.description)
 				}
 			}
 				.padding()

@@ -25,7 +25,9 @@ struct PersonView: View {
             HStack {
                 Group {
                     Text(name)
-                    Spacer()
+                    Text("   •   ") //3M: Had to change - looked horrible on an iPad
+                                    // and remember - related things should be closer
+                                    // together than unrelated things
                     Text(role)
                 }
                 .font(.headline)
