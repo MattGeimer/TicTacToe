@@ -25,7 +25,7 @@ struct BoardGridView: View {
 							PositionView(position: position, positionValue: self.gameState.positionValues[position.coordinate.1][position.coordinate.0], size: CGSize(width: geometry.size.width > geometry.size.height ? geometry.size.height / 4 : geometry.size.width / 4, height: geometry.size.width > geometry.size.height ? geometry.size.height / 4 : geometry.size.width / 4))
 									.padding(geometry.size.width / 32)
 									.environmentObject(self.gameState)
-									.accessibility(identifier: position.stringRepresentation)
+                                    .accessibility(identifier: position.description)
 						}
 					}
 				}

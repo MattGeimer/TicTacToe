@@ -10,37 +10,38 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var gameState: GameState
-	let positions: [[Position]] = [[.topLeft, .topMiddle, .topRight], [.middleLeft, .center, .middleRight], [.bottomLeft, .bottomMiddle, .bottomRight]]
-	
-	let boardAdjustmentConstant: CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? 1 : 6/8
-	
+    let positions: [[Position]] = [[.topLeft, .topMiddle, .topRight], [.middleLeft, .center, .middleRight], [.bottomLeft, .bottomMiddle, .bottomRight]]
+    
+    let boardAdjustmentConstant: CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? 1 : 6/8
+    
     var body: some View {
-		GeometryReader { geometry in
-			VStack {
-				Spacer()
-				TitleLabelView(labelText: self.gameState.singlePlayer ? "Single Player" : "Multiplayer")
-					.padding()
-					.frame(width: geometry.size.width / (4/3), height: geometry.size.height / 10)
-					.accessibility(identifier: "titleLabel")
-				
-				BoardGridView(positions: self.positions)
-				.frame(width: geometry.size.width < geometry.size.height ? geometry.size.width * self.boardAdjustmentConstant : geometry.size.height * self.boardAdjustmentConstant, height: geometry.size.width < geometry.size.height ? geometry.size.width * self.boardAdjustmentConstant : geometry.size.height * self.boardAdjustmentConstant)
-				.environmentObject(self.gameState)
-				
-				if self.gameState.gameState != .ongoing && self.gameState.gameState != .empty {
-					Button(action: {
-						self.gameState.resetGame()
-					}) {
-						TitleLabelView(labelText: "New Game")
-							.padding()
-							.accessibility(identifier: "newGameButton")
-					}
-				}
-				Spacer()
-			}
-				.background(Color("backgroundColor"))
-				.edgesIgnoringSafeArea(.all)
-		}
+        GeometryReader { geometry in
+            VStack {
+                Spacer()
+                TitleLabelView(labelText: self.gameState.singlePlayer ? "Single Player" : "Multiplayer")
+                    .padding()
+                    .frame(width: geometry.size.width / (4/3), height: geometry.size.height / 10)
+                    .accessibility(identifier: "titleLabel")
+                    .colorMultiply(.blue)
+                
+                BoardGridView(positions: self.positions)
+                .frame(width: geometry.size.width < geometry.size.height ? geometry.size.width * self.boardAdjustmentConstant : geometry.size.height * self.boardAdjustmentConstant, height: geometry.size.width < geometry.size.height ? geometry.size.width * self.boardAdjustmentConstant : geometry.size.height * self.boardAdjustmentConstant)
+                .environmentObject(self.gameState)
+                
+                if self.gameState.gamePhase != .ongoing && self.gameState.gamePhase != .empty {
+                    Button(action: {
+                        self.gameState.resetGame()
+                    }) {
+                        TitleLabelView(labelText: "New Game")
+                            .padding()
+                            .accessibility(identifier: "newGameButton")
+                    }
+                }
+                Spacer()
+            }
+                .background(Color("backgroundColor"))
+                .edgesIgnoringSafeArea(.all)
+        }
     }
 }
 
@@ -50,6 +51,6 @@ struct GameView_Previews: PreviewProvider {
             GameView()
                 .previewDevice(PreviewDevice(rawValue: deviceName))
         }
-		.environmentObject(GameState(singlePlayer: true, difficulty: .easy))
+        .environmentObject(GameState(singlePlayer: true, difficulty: .easy))
     }
 }

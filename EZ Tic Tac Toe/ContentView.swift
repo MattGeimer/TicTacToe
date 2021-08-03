@@ -35,8 +35,8 @@ struct ContentView: View {
 								.accessibility(label: Text("multiplayer"))
 						}
 					}
-						.padding(25)
-					
+                    .padding(4)
+
 					Spacer()
                     Button(action: {
                         self.showingCredits.toggle()

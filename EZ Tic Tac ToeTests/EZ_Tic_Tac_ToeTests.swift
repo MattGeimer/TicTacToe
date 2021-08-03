@@ -28,14 +28,14 @@ class EZTicTacToeTests: XCTestCase {
 
 	///Tests the receiveInput functionality
     func testReceiveInput() {
-		XCTAssertEqual(gameState.receiveInput(position: .topLeft), .success)
-		XCTAssertEqual(gameState.receiveInput(position: .topLeft), .occupied)
-		XCTAssertEqual(gameState.receiveInput(position: .topMiddle), .success)
-		XCTAssertEqual(gameState.receiveInput(position: .topLeft), .occupied)
-		XCTAssertEqual(gameState.receiveInput(position: .middleLeft), .success)
-		XCTAssertEqual(gameState.receiveInput(position: .center), .success)
-		XCTAssertEqual(gameState.receiveInput(position: .bottomLeft), .success)
-		XCTAssert(gameState!.gameState == .xWins)
+		XCTAssertEqual(gameState.makeMove(position: .topLeft), .success)
+		XCTAssertEqual(gameState.makeMove(position: .topLeft), .occupied)
+		XCTAssertEqual(gameState.makeMove(position: .topMiddle), .success)
+		XCTAssertEqual(gameState.makeMove(position: .topLeft), .occupied)
+		XCTAssertEqual(gameState.makeMove(position: .middleLeft), .success)
+		XCTAssertEqual(gameState.makeMove(position: .center), .success)
+		XCTAssertEqual(gameState.makeMove(position: .bottomLeft), .success)
+		XCTAssert(gameState!.gamePhase == .xWins)
     }
 	
 	/// Tests what happens if there's a tie
@@ -46,7 +46,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.x, .o, .x]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .tie)
+		XCTAssert(gameState!.gamePhase == .tie)
 	}
 	
 	//Test X win conditions
@@ -59,7 +59,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.empty, .empty, .empty]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .xWins)
+		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing all positions in the middle row
@@ -70,7 +70,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.empty, .empty, .empty]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .xWins)
+		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing all positions in the bottom row
@@ -81,7 +81,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.x, .x, .x]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .xWins)
+		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing all positions in the left column
@@ -92,7 +92,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.x, .empty, .empty]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .xWins)
+		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing all positions in the middle column
@@ -103,7 +103,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.empty, .x, .empty]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .xWins)
+		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing all positions in the right column
@@ -114,7 +114,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.empty, .empty, .x]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .xWins)
+		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing the diagonal from the top left to the bottom right
@@ -125,7 +125,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.empty, .empty, .x]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .xWins)
+		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing the diagonal from the top right to the bottom left
@@ -136,7 +136,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.x, .empty, .empty]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .xWins)
+		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	//Test O win conditions
@@ -149,7 +149,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.x, .empty, .empty]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .oWins)
+		XCTAssert(gameState!.gamePhase == .oWins)
     }
 	
 	/// Tests what happens when O wins by capturing all positions in the middle row
@@ -160,7 +160,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.x, .empty, .empty]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .oWins)
+		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing all positions in the bottom row
@@ -171,7 +171,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.o, .o, .o]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .oWins)
+		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing all positions in the left column
@@ -182,7 +182,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.o, .empty, .empty]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .oWins)
+		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing all positions in the middle column
@@ -193,7 +193,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.x, .o, .empty]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .oWins)
+		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing all positions in the right column
@@ -204,7 +204,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.x, .empty, .o]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .oWins)
+		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing the diagonal from the top left to the bottom right
@@ -215,7 +215,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.x, .empty, .o]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .oWins)
+		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing the diagonal from the top right to the bottom left
@@ -226,7 +226,7 @@ class EZTicTacToeTests: XCTestCase {
 			[.o, .empty, .empty]
 		])
 		gameState.updateGameState()
-		XCTAssert(gameState!.gameState == .oWins)
+		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Test how the AI reacts to the player starting in the center

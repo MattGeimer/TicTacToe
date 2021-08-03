@@ -16,13 +16,25 @@ struct CreditView: View {
                 .padding(.top)
             PersonView(name: "Matt Geimer", role: "Developer", imagePath: "mattGeimer")
             PersonView(name: "Bill Yen", role: "Artist", imagePath: "billYen")
-            VStack {
-                Text("Beta Testers")
-                    .font(.title)
-                Text("Sam Pomerantz")
-                Text("Ben Newcomb")
-                Text("Tyler Janczak")
-            }
+            
+            LazyVGrid(columns: [
+                GridItem(.flexible()),
+                GridItem(.flexible())
+            ], content: {
+                VStack {
+                    Text("Beta Testers")
+                        .font(.title)
+                    Text("Sam Pomerantz")
+                    Text("Ben Newcomb")
+                    Text("Tyler Janczak")
+                }
+                VStack {
+                    Text("Additional Help")
+                        .font(.title)
+                    Text("Michael M. Mayer")
+                    Spacer()
+                }
+            })
         }
             .navigationBarTitle("Credits", displayMode: .inline)
     }
@@ -30,8 +42,6 @@ struct CreditView: View {
 
 struct CreditView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            CreditView()
-        }
+        CreditView()
     }
 }

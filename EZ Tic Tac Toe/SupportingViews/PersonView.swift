@@ -25,7 +25,7 @@ struct PersonView: View {
             HStack {
                 Group {
                     Text(name)
-                    Spacer()
+                    Text("   •   ")
                     Text(role)
                 }
                 .font(.headline)
@@ -38,6 +38,6 @@ struct PersonView: View {
 struct PersonView_Previews: PreviewProvider {
     static var previews: some View {
         PersonView(name: "Matt Geimer", role: "Developer", imagePath: "mattGeimer")
-            .previewLayout(.fixed(width: 250, height: 250))
+            .previewLayout(.fixed(width: 300, height: 250))
     }
 }
