@@ -22,13 +22,13 @@ struct GameView: View {
                     .padding()
                     .frame(width: geometry.size.width / (4/3), height: geometry.size.height / 10)
                     .accessibility(identifier: "titleLabel")
-                    .colorMultiply(.blue) //3M: need to distinguish title from pressable button
+                    .colorMultiply(.blue)
                 
                 BoardGridView(positions: self.positions)
                 .frame(width: geometry.size.width < geometry.size.height ? geometry.size.width * self.boardAdjustmentConstant : geometry.size.height * self.boardAdjustmentConstant, height: geometry.size.width < geometry.size.height ? geometry.size.width * self.boardAdjustmentConstant : geometry.size.height * self.boardAdjustmentConstant)
                 .environmentObject(self.gameState)
                 
-                if self.gameState.boardState != .ongoing && self.gameState.boardState != .empty {
+                if self.gameState.gamePhase != .ongoing && self.gameState.gamePhase != .empty {
                     Button(action: {
                         self.gameState.resetGame()
                     }) {

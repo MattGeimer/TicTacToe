@@ -15,23 +15,21 @@ class GameState: ObservableObject {
     static let emptyBoard: [[PositionValue]] = [[.empty, .empty, .empty], [.empty, .empty, .empty], [.empty, .empty, .empty]]
 
     ///Represents the state of the board as an enumeration
-    enum BoardState {
+    enum GamePhase {
         case empty, ongoing, xWins, oWins, tie
     }
-    // 3M: Obviously I don't know your future plans for BoardState but since it is only accessed from within GameState, it makes sense to define it inside GameState
 
     enum MoveResult {
         case success, occupied, notPlayerTurn, invalidGameState
     }
-    // 3M: Obviously I don't know your future plans for MoveResult (was InputResult which was too generic/unhelpful) but it's too minor to be its own thing.
 
     let numberOfRows: Int = 3
     let numberOfColumns: Int = 3
     
     @Published var singlePlayer: Bool
     @Published var xPlayerTurn: Bool = true
-    @Published var boardState: BoardState = .empty //3M: really confusing between BoardState and GameState if you keep jumping back and forth
-    @Published var difficulty: DifficultyLevel // you are just setting it in the initializer so no need to set a phantom value
+    @Published var gamePhase: GamePhase = .empty
+    @Published var difficulty: DifficultyLevel
     var positionValues = emptyBoard
     
     init(singlePlayer: Bool, difficulty: DifficultyLevel) {
@@ -62,8 +60,8 @@ class GameState: ObservableObject {
     
     ///Evaluates the current board to determine current game state, then determines whether to toggle which player's turn it is
     func updateGameState() {
-        boardState = evaluateCurrentBoard()
-        if boardState == .ongoing {
+        gamePhase = evaluateCurrentBoard()
+        if gamePhase == .ongoing {
             xPlayerTurn.toggle()
             
             if (singlePlayer && !xPlayerTurn) {
@@ -179,7 +177,7 @@ class GameState: ObservableObject {
     ///Evaluates the current board to determine the appropriate BoardState
     ///- Version: 1.0
     ///- Returns: The new board state based on the current state of the board.
-    func evaluateCurrentBoard() -> BoardState {
+    func evaluateCurrentBoard() -> GamePhase {
         if evaluate(player:.x) {
             return .xWins
         } else if evaluate(player:.o) {
@@ -291,7 +289,7 @@ class GameState: ObservableObject {
     func resetGame() {
         positionValues = GameState.emptyBoard
         xPlayerTurn = true
-        boardState = .empty
+        gamePhase = .empty
     }
     
     ///Sets board to given 2d array

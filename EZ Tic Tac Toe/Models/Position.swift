@@ -11,7 +11,7 @@ import Foundation
 ///Represents where on the board a position is
 ///- Author: Matt Geimer
 ///- Version: 1.0
-enum Position: String, CustomStringConvertible {  //3M: make code more Swift idiomatic by using CustomStringConvertible protocl when you need a string representation
+enum Position: String, CustomStringConvertible {
     var description: String {
         return rawValue
     }
@@ -22,21 +22,22 @@ enum Position: String, CustomStringConvertible {  //3M: make code more Swift idi
     
     ///Returns coordinate in form (x,y), where x and y begin in the top left corner at (0,0) and increase as x and y approach the bottom right
     ///- Version: 1.0
-    var coordinate: (col: Int, row: Int) {  //3M: makes sense here to add labels - easy to get confused otherwise
+    var coordinate: (col: Int, row: Int) {
         switch self {
-            case .topLeft: return (0,0)
-            case .topMiddle: return (1,0)
-            case .topRight: return (2,0)
-            case .middleLeft: return (0,1)
-            case .center: return (1,1)
-            case .middleRight: return (2,1)
-            case .bottomLeft: return (0,2)
+            // Top row
+            case .topLeft:      return (0,0)
+            case .topMiddle:    return (1,0)
+            case .topRight:     return (2,0)
+            // Middle row
+            case .middleLeft:   return (0,1)
+            case .center:       return (1,1)
+            case .middleRight:  return (2,1)
+            // Bottom row
+            case .bottomLeft:   return (0,2)
             case .bottomMiddle: return (1,2)
-            case .bottomRight: return (2,2)
+            case .bottomRight:  return (2,2)
         }
     }
-    
-    // 3M: removed stringRepresentation since it wasn't necessary after using idiomatic Swift protocol: CustomStringConvertible
         
     static func getCoordinate(x: Int, y: Int) -> Position {
         switch x {

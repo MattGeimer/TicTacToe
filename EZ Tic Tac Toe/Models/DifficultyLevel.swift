@@ -9,7 +9,7 @@
 import Foundation
 
 /// Represents different difficulty levers for the AI
-enum DifficultyLevel: CustomStringConvertible {     //3M: More idiomatic Swift
+enum DifficultyLevel: CustomStringConvertible {
     
     case easy, medium, hard
     
@@ -28,9 +28,9 @@ enum DifficultyLevel: CustomStringConvertible {     //3M: More idiomatic Swift
     var percentageRandomMoves: Double {
         switch self {
         case .easy:
-            return 1 / 3    //3M: Let's be a bit more subtle - I am being subjective here
+            return 1 / 3
         case .medium:
-            return 1 / 4    //3M:  Let's be a bit more subtle - I am being subjective here
+            return 1 / 4
         case .hard:
             return 0
         }

@@ -35,15 +35,15 @@ struct PositionView: View {
                 self.alertTitle = "Not your turn"
                 self.alertMessage = "The AI is currently attempting to make its move"
                 self.presentAlert = true
-            } else if self.gameState.boardState == .xWins {
+            } else if self.gameState.gamePhase == .xWins {
                 self.alertTitle = "X wins!"
                 self.alertMessage = "Player X has won!"
                 self.presentAlert = true
-            } else if self.gameState.boardState == .oWins {
+            } else if self.gameState.gamePhase == .oWins {
                 self.alertTitle = "O wins!"
                 self.alertMessage = "Player O has won!"
                 self.presentAlert = true
-            } else if self.gameState.boardState == .tie {
+            } else if self.gameState.gamePhase == .tie {
                 self.alertTitle = "Tie Game"
                 self.alertMessage = "No player has won"
                 self.presentAlert = true
@@ -59,7 +59,6 @@ struct PositionView: View {
         }
         .alert(isPresented: $presentAlert) {
             Alert(title: Text(self.alertTitle), message: Text(self.alertMessage)) //Present an alert if the user attempts to play an already taken position
-            //3M: You are notifying the player of a situation, not cancelling an action, so OK is the better button to dismiss the alert
         }
     }
 }

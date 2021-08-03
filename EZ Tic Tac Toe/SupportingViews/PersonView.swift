@@ -25,9 +25,7 @@ struct PersonView: View {
             HStack {
                 Group {
                     Text(name)
-                    Text("   •   ") //3M: Had to change - looked horrible on an iPad
-                                    // and remember - related things should be closer
-                                    // together than unrelated things
+                    Text("   •   ")
                     Text(role)
                 }
                 .font(.headline)
@@ -40,6 +38,6 @@ struct PersonView: View {
 struct PersonView_Previews: PreviewProvider {
     static var previews: some View {
         PersonView(name: "Matt Geimer", role: "Developer", imagePath: "mattGeimer")
-            .previewLayout(.fixed(width: 250, height: 250))
+            .previewLayout(.fixed(width: 300, height: 250))
     }
 }

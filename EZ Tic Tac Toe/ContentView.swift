@@ -35,7 +35,7 @@ struct ContentView: View {
 								.accessibility(label: Text("multiplayer"))
 						}
 					}
-                    .padding(4)  //3M: Associated items should be grouped closer together when there are other elements on the screen
+                    .padding(4)
 
 					Spacer()
                     Button(action: {
