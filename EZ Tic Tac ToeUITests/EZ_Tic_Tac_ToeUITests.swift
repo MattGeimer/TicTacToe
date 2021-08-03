@@ -44,7 +44,7 @@ class EZTicTacToeUITests: XCTestCase {
 		XCUIApplication().buttons["topLeft"].tap()
 		let elementsQuery = app.alerts["Move Invalid"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["Move Invalid"].exists)
-		elementsQuery.buttons["Cancel"].tap()
+		elementsQuery.buttons["OK"].tap()
 	}
 	
 	/// Tests what happens if there's a tie
@@ -65,7 +65,7 @@ class EZTicTacToeUITests: XCTestCase {
 		
 		let elementsQuery = app.alerts["Tie Game"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["Tie Game"].exists)
-		elementsQuery.buttons["Cancel"].tap()
+		elementsQuery.buttons["OK"].tap()
 		
 		let newGameButton: XCUIElement = XCUIApplication().buttons["newGameButton"]
 		XCTAssertTrue(newGameButton.exists)
@@ -88,7 +88,7 @@ class EZTicTacToeUITests: XCTestCase {
 		sleep(1)
 		
 		let elementsQuery = app.alerts["Tie Game"].scrollViews.otherElements
-		elementsQuery.buttons["Cancel"].tap()
+		elementsQuery.buttons["OK"].tap()
 		
 		let newGameButton: XCUIElement = XCUIApplication().buttons["newGameButton"]
 		XCTAssertTrue(newGameButton.exists)
@@ -118,7 +118,7 @@ class EZTicTacToeUITests: XCTestCase {
 		
 		let elementsQuery = app.alerts["X wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["X wins!"].exists)
-		elementsQuery.buttons["Cancel"].tap()
+		elementsQuery.buttons["OK"].tap()
 		
 		let newGameButton: XCUIElement = XCUIApplication().buttons["newGameButton"]
 		XCTAssertTrue(newGameButton.exists)
@@ -139,7 +139,7 @@ class EZTicTacToeUITests: XCTestCase {
 		
 		let elementsQuery = app.alerts["O wins!"].scrollViews.otherElements
 		XCTAssertTrue(app.alerts["O wins!"].exists)
-		elementsQuery.buttons["Cancel"].tap()
+		elementsQuery.buttons["OK"].tap()
 		
 		let newGameButton: XCUIElement = XCUIApplication().buttons["newGameButton"]
 		XCTAssertTrue(newGameButton.exists)
