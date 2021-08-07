@@ -39,6 +39,7 @@ struct GameView: View {
                 }
                 Spacer()
             }
+                .frame(width: UIScreen.main.bounds.width)
                 .background(Color("backgroundColor"))
                 .edgesIgnoringSafeArea(.all)
         }
