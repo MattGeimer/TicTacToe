@@ -40,7 +40,7 @@ class GameState: ObservableObject {
     ///Take an input of which position was played (the player's move), and if the position is empty, set its state to whichever player's turn it is
     ///- Parameter position: the position to be played as an enum (ex: .topLeft)
     ///- Returns: a MoveResult which shows .success or what went wrong
-    func makeMove(position: Position) -> MoveResult {
+    func makeMove(position: Position) async -> MoveResult {
         guard positionValues[position.coordinate.row][position.coordinate.col] == .empty else {
             return .occupied
         }
@@ -53,67 +53,72 @@ class GameState: ObservableObject {
             return .notPlayerTurn
         }
         
-        updateGameState()
+        await updateGameState()
         
         return .success
     }
     
     ///Evaluates the current board to determine current game state, then determines whether to toggle which player's turn it is
-    func updateGameState() {
-        gamePhase = evaluateCurrentBoard()
+    func updateGameState() async {
+        await MainActor.run {
+            gamePhase = evaluateCurrentBoard()
+        }
         if gamePhase == .ongoing {
             xPlayerTurn.toggle()
             
             if (singlePlayer && !xPlayerTurn) {
-                DispatchQueue(label: "Minimax", qos: .userInitiated).async {
-                    let move = self.getMoveForAI()
-                    DispatchQueue.main.async {
-                        self.setPosition(position: move, value: .o)
-                        self.updateGameState()
-                    }
-                }
+                let move = await self.getMoveForAI()
+                self.setPosition(position: move, value: .o)
+                await self.updateGameState()
             }
         }
     }
     
     /// Using the difficulty level, picks a move for the AI to make (uses random moves sometimes, even if they're not the best move)
     /// - Returns: The move for the AI to make
-    func getMoveForAI() -> Position {
+    func getMoveForAI() async -> Position {
         let randomMoveNumber = Double.random(in: 0 ... 1)
         
         if randomMoveNumber < difficulty.percentageRandomMoves {
             return randomMove()
         } else {
-            return findBestMove()
+            return await withCheckedContinuation({ continuation in
+                findBestMove { bestMove in
+                    continuation.resume(returning: bestMove)
+                }
+            })
         }
     }
     
     ///Determine the best move for the AI
     ///- Version: 1.0
     ///- Returns: The best position that the AI could make given the current board
-    func findBestMove() -> Position {
+    func findBestMove(completion: @escaping (Position) -> Void) {
         var bestCase = Int.min
         var bestMove:Position?
         
-        for row in 0 ..< numberOfRows {
-            for col in 0 ..< numberOfColumns {
-                if (positionValues[row][col] == .empty) {
-                    let newBoard = GameState(singlePlayer: true, difficulty: self.difficulty)
-                    newBoard.setBoard(positionValues: positionValues)
-                    
-                    let newPosition = Position.getCoordinate(x: col, y: row)
-                    newBoard.setPosition(position: newPosition, value: .o)
-                    
-                    let result = GameState.minimax(newBoard, maximizing: false, originalPlayer: .o, depth: 0)
-                    
-                    if (result > bestCase) {
-                        bestCase = result
-                        bestMove = Position.getCoordinate(x: col, y: row)
+        DispatchQueue.init(label: "com.mattgeimer.tictactoe.ai-move", qos: .userInitiated).async {
+            for row in 0 ..< self.numberOfRows {
+                for col in 0 ..< self.numberOfColumns {
+                    if (self.positionValues[row][col] == .empty) {
+                        let newBoard = GameState(singlePlayer: true, difficulty: self.difficulty)
+                        newBoard.setBoard(positionValues: self.positionValues)
+                        
+                        let newPosition = Position.getCoordinate(x: col, y: row)
+                        newBoard.setPosition(position: newPosition, value: .o)
+                        
+                        let result = GameState.minimax(newBoard, maximizing: false, originalPlayer: .o, depth: 0)
+                        
+                        if (result > bestCase) {
+                            bestCase = result
+                            bestMove = Position.getCoordinate(x: col, y: row)
+                        }
                     }
                 }
             }
+            
+            completion(bestMove ?? self.randomMove())
         }
-        return bestMove ?? randomMove()
     }
     
     /// Evaluates the value of a board and how the game would play out after it.
