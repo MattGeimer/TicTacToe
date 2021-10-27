@@ -27,210 +27,218 @@ class EZTicTacToeTests: XCTestCase {
     }
 
 	///Tests the receiveInput functionality
-    func testReceiveInput() {
-		XCTAssertEqual(gameState.makeMove(position: .topLeft), .success)
-		XCTAssertEqual(gameState.makeMove(position: .topLeft), .occupied)
-		XCTAssertEqual(gameState.makeMove(position: .topMiddle), .success)
-		XCTAssertEqual(gameState.makeMove(position: .topLeft), .occupied)
-		XCTAssertEqual(gameState.makeMove(position: .middleLeft), .success)
-		XCTAssertEqual(gameState.makeMove(position: .center), .success)
-		XCTAssertEqual(gameState.makeMove(position: .bottomLeft), .success)
+    func testReceiveInput() async {
+        let expectedResults: [(Position, GameState.MoveResult)] = [
+            (.topLeft, .success),
+            (.topLeft, .occupied),
+            (.topMiddle, .success),
+            (.topLeft, .occupied),
+            (.middleLeft, .success),
+            (.center, .success),
+            (.bottomLeft, .success)
+        ]
+        
+        for expectedResult in expectedResults {
+            let actualResult = await gameState.makeMove(position: expectedResult.0)
+            XCTAssertEqual(actualResult, expectedResult.1)
+        }
+        
 		XCTAssert(gameState!.gamePhase == .xWins)
     }
 	
 	/// Tests what happens if there's a tie
-	func testTieGameScenario() {
+	func testTieGameScenario() async {
 		gameState.setBoard(positionValues: [
 			[.x, .x, .o],
 			[.o, .o, .x],
 			[.x, .o, .x]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .tie)
 	}
 	
 	//Test X win conditions
 	
 	/// Tests what happens when X wins by capturing all positions in the top row
-	func testHorizontalXWinTop() {
+	func testHorizontalXWinTop() async {
 		gameState.setBoard(positionValues: [
 			[.x, .x, .x],
 			[.o, .o, .empty],
 			[.empty, .empty, .empty]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing all positions in the middle row
-	func testHorizontalXWinMiddle() {
+	func testHorizontalXWinMiddle() async {
 		gameState.setBoard(positionValues: [
 			[.o, .o, .empty],
 			[.x, .x, .x],
 			[.empty, .empty, .empty]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing all positions in the bottom row
-	func testHorizontalXWinBottom() {
+	func testHorizontalXWinBottom() async {
 		gameState.setBoard(positionValues: [
 			[.o, .o, .empty],
 			[.empty, .empty, .empty],
 			[.x, .x, .x]
 		])
-		gameState.updateGameState()
+        await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing all positions in the left column
-	func testVerticalXWinLeft() {
+	func testVerticalXWinLeft() async {
 		gameState.setBoard(positionValues: [
 			[.x, .o, .empty],
 			[.x, .o, .empty],
 			[.x, .empty, .empty]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing all positions in the middle column
-	func testVerticalXWinMiddle() {
+	func testVerticalXWinMiddle() async {
 		gameState.setBoard(positionValues: [
 			[.o, .x, .empty],
 			[.o, .x, .empty],
 			[.empty, .x, .empty]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing all positions in the right column
-	func testVerticalXWinRight() {
+	func testVerticalXWinRight() async {
 		gameState.setBoard(positionValues: [
 			[.empty, .o, .x],
 			[.empty, .o, .x],
 			[.empty, .empty, .x]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing the diagonal from the top left to the bottom right
-	func testDiagonalXWinTopLeftToBottomRight() {
+	func testDiagonalXWinTopLeftToBottomRight() async {
 		gameState.setBoard(positionValues: [
 			[.x, .o, .empty],
 			[.o, .x, .empty],
 			[.empty, .empty, .x]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	/// Tests what happens when X wins by capturing the diagonal from the top right to the bottom left
-	func testDiagonalXWinTopRightToBottomLeft() {
+	func testDiagonalXWinTopRightToBottomLeft() async {
 		gameState.setBoard(positionValues: [
 			[.empty, .o, .x],
 			[.o, .x, .empty],
 			[.x, .empty, .empty]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .xWins)
 	}
 	
 	//Test O win conditions
 	
 	/// Tests what happens when O wins by capturing all positions in the top row
-	func testHorizontalOWinTop() {
+	func testHorizontalOWinTop() async {
 		gameState.setBoard(positionValues: [
 			[.o, .o, .o],
 			[.x, .x, .empty],
 			[.x, .empty, .empty]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .oWins)
     }
 	
 	/// Tests what happens when O wins by capturing all positions in the middle row
-	func testHorizontalOWinMiddle() {
+	func testHorizontalOWinMiddle() async {
 		gameState.setBoard(positionValues: [
 			[.x, .x, .empty],
 			[.o, .o, .o],
 			[.x, .empty, .empty]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing all positions in the bottom row
-	func testHorizontalOWinBottom() {
+	func testHorizontalOWinBottom() async {
 		gameState.setBoard(positionValues: [
 			[.empty, .empty, .empty],
 			[.x, .x, .empty],
 			[.o, .o, .o]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing all positions in the left column
-	func testVerticalOWinLeft() {
+	func testVerticalOWinLeft() async {
 		gameState.setBoard(positionValues: [
 			[.o, .x, .x],
 			[.o, .x, .empty],
 			[.o, .empty, .empty]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing all positions in the middle column
-	func testVerticalOWinMiddle() {
+	func testVerticalOWinMiddle() async {
 		gameState.setBoard(positionValues: [
 			[.empty, .o, .x],
 			[.x, .o, .empty],
 			[.x, .o, .empty]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing all positions in the right column
-	func testVerticalOWinRight() {
+	func testVerticalOWinRight() async {
 		gameState.setBoard(positionValues: [
 			[.empty, .empty, .o],
 			[.x, .x, .o],
 			[.x, .empty, .o]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing the diagonal from the top left to the bottom right
-	func testDiagonalOWinTopLeftToBottomRight() {
+	func testDiagonalOWinTopLeftToBottomRight() async {
 		gameState.setBoard(positionValues: [
 			[.o, .empty, .x],
 			[.x, .o, .empty],
 			[.x, .empty, .o]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Tests what happens when O wins by capturing the diagonal from the top right to the bottom left
-	func testDiagonalOWinTopRightToBottomLeft() {
+	func testDiagonalOWinTopRightToBottomLeft() async {
 		gameState.setBoard(positionValues: [
 			[.x, .x, .o],
 			[.x, .o, .empty],
 			[.o, .empty, .empty]
 		])
-		gameState.updateGameState()
+		await gameState.updateGameState()
 		XCTAssert(gameState!.gamePhase == .oWins)
 	}
 	
 	/// Test how the AI reacts to the player starting in the center
-	func testAIMakingWrongMoveStageOne() {
+	func testAIMakingWrongMoveStageOne() async {
 		gameState.setBoard(positionValues: [
 			[.empty,.empty,.empty],
 			[.empty,.x,.empty],
@@ -241,14 +249,15 @@ class EZTicTacToeTests: XCTestCase {
 		var actualMove: Position?
 		
 		measure {
-			actualMove = gameState.findBestMove()
+            gameState.findBestMove { position in
+                actualMove = position
+                XCTAssertEqual(expectedMove, actualMove)
+            }
 		}
-		
-		XCTAssertEqual(expectedMove, actualMove)
 	}
 	
 	/// Test what happens after the user places an x in the opposing corner
-	func testAIMakingWrongMoveStageTwoDiagonal() {
+	func testAIMakingWrongMoveStageTwoDiagonal() async {
 		gameState.setBoard(positionValues: [
 			[.o,.empty,.empty],
 			[.empty,.x,.empty],
@@ -259,14 +268,15 @@ class EZTicTacToeTests: XCTestCase {
 		var actualMove: Position?
 		
 		measure {
-			actualMove = gameState.findBestMove()
+            gameState.findBestMove { position in
+                actualMove = position
+                XCTAssertEqual(expectedMove, actualMove)
+            }
 		}
-		
-		XCTAssertEqual(expectedMove, actualMove)
 	}
 	
 	/// Test what happens if the user places an x next to the previous o move
-	func testAIMakingWrongMoveStageTwoVertical() {
+	func testAIMakingWrongMoveStageTwoVertical() async {
 		gameState.setBoard(positionValues: [
 			[.o,.x,.empty],
 			[.empty,.x,.empty],
@@ -277,9 +287,10 @@ class EZTicTacToeTests: XCTestCase {
 		var actualMove: Position?
 		
 		measure {
-			actualMove = gameState.findBestMove()
+            gameState.findBestMove { position in
+                actualMove = position
+                XCTAssertEqual(expectedMove, actualMove)
+            }
 		}
-		
-		XCTAssertEqual(expectedMove, actualMove)
 	}
 }
