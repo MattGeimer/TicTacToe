@@ -24,29 +24,32 @@ struct PositionView: View {
     
     var body: some View {
         Button(action: {
-            let inputResult = self.gameState.makeMove(position: self.position)
-            
-            //Attempt to play the position, if the position cannot be played, set variable to show alert
-            if inputResult == .occupied {
-                self.alertTitle = "Move Invalid"
-                self.alertMessage = "A player has already used this position"
-                self.presentAlert = true
-            } else if inputResult == .notPlayerTurn {
-                self.alertTitle = "Not your turn"
-                self.alertMessage = "The AI is currently attempting to make its move"
-                self.presentAlert = true
-            } else if self.gameState.gamePhase == .xWins {
-                self.alertTitle = "X wins!"
-                self.alertMessage = "Player X has won!"
-                self.presentAlert = true
-            } else if self.gameState.gamePhase == .oWins {
-                self.alertTitle = "O wins!"
-                self.alertMessage = "Player O has won!"
-                self.presentAlert = true
-            } else if self.gameState.gamePhase == .tie {
-                self.alertTitle = "Tie Game"
-                self.alertMessage = "No player has won"
-                self.presentAlert = true
+            Task(priority: .userInitiated) {
+                let inputResult = await self.gameState.makeMove(position: self.position)
+                await MainActor.run(body: {
+                    //Attempt to play the position, if the position cannot be played, set variable to show alert
+                    if inputResult == .occupied {
+                        self.alertTitle = "Move Invalid"
+                        self.alertMessage = "A player has already used this position"
+                        self.presentAlert = true
+                    } else if inputResult == .notPlayerTurn {
+                        self.alertTitle = "Not your turn"
+                        self.alertMessage = "The AI is currently attempting to make its move"
+                        self.presentAlert = true
+                    } else if self.gameState.gamePhase == .xWins {
+                        self.alertTitle = "X wins!"
+                        self.alertMessage = "Player X has won!"
+                        self.presentAlert = true
+                    } else if self.gameState.gamePhase == .oWins {
+                        self.alertTitle = "O wins!"
+                        self.alertMessage = "Player O has won!"
+                        self.presentAlert = true
+                    } else if self.gameState.gamePhase == .tie {
+                        self.alertTitle = "Tie Game"
+                        self.alertMessage = "No player has won"
+                        self.presentAlert = true
+                    }
+                })
             }
         }) {
             Text(positionValue.description)
