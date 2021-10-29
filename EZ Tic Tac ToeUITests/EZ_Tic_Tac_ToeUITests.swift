@@ -32,6 +32,7 @@ class EZTicTacToeUITests: XCTestCase {
 		let multiplayerGameButton: XCUIElement = XCUIApplication().buttons["multiplayer"]
 		XCTAssertTrue(multiplayerGameButton.exists)
 		multiplayerGameButton.tap()
+        sleep(1)
 	}
 	
 	//Test edge cases
