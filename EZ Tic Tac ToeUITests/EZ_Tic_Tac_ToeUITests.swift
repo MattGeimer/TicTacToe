@@ -32,6 +32,7 @@ class EZTicTacToeUITests: XCTestCase {
 		let multiplayerGameButton: XCUIElement = XCUIApplication().buttons["multiplayer"]
 		XCTAssertTrue(multiplayerGameButton.exists)
 		multiplayerGameButton.tap()
+        sleep(1)
 	}
 	
 	//Test edge cases
@@ -52,13 +53,21 @@ class EZTicTacToeUITests: XCTestCase {
 		startMultiplayerGame()
 		
 		XCUIApplication().buttons["topLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["topMiddle"].tap()
+        sleep(1)
 		XCUIApplication().buttons["topRight"].tap()
+        sleep(1)
 		XCUIApplication().buttons["center"].tap()
+        sleep(1)
 		XCUIApplication().buttons["middleLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["middleRight"].tap()
+        sleep(1)
 		XCUIApplication().buttons["bottomRight"].tap()
+        sleep(1)
 		XCUIApplication().buttons["bottomLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["bottomMiddle"].tap()
 		
 		sleep(1)
@@ -76,13 +85,21 @@ class EZTicTacToeUITests: XCTestCase {
 		startMultiplayerGame()
 		
 		XCUIApplication().buttons["topLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["topMiddle"].tap()
+        sleep(1)
 		XCUIApplication().buttons["topRight"].tap()
+        sleep(1)
 		XCUIApplication().buttons["center"].tap()
+        sleep(1)
 		XCUIApplication().buttons["middleLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["middleRight"].tap()
+        sleep(1)
 		XCUIApplication().buttons["bottomRight"].tap()
+        sleep(1)
 		XCUIApplication().buttons["bottomLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["bottomMiddle"].tap()
 		
 		sleep(1)
@@ -109,9 +126,13 @@ class EZTicTacToeUITests: XCTestCase {
 		startMultiplayerGame()
 		
 		XCUIApplication().buttons["topLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["middleLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["topMiddle"].tap()
+        sleep(1)
 		XCUIApplication().buttons["center"].tap()
+        sleep(1)
 		XCUIApplication().buttons["topRight"].tap()
 		
 		sleep(1)
@@ -129,10 +150,15 @@ class EZTicTacToeUITests: XCTestCase {
 		startMultiplayerGame()
 		
 		XCUIApplication().buttons["bottomLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["topLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["middleLeft"].tap()
+        sleep(1)
 		XCUIApplication().buttons["topMiddle"].tap()
+        sleep(1)
 		XCUIApplication().buttons["center"].tap()
+        sleep(1)
 		XCUIApplication().buttons["topRight"].tap()
 		
 		sleep(1)
